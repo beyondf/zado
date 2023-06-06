@@ -1,0 +1,116 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+        body,
+        html {
+            margin: 0;
+            height: 100%;
+            background-color: black;
+        }
+
+        div {
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        .leftArea {
+            float: left;
+            width: 100px;
+            border-right-width: 1px;
+            border-right-style: solid;
+            border-color: red;
+            height: 100%;
+        }
+
+        .mainPng {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+        }
+
+        .mainPng:hover .overlay {
+            opacity: 1;
+        }
+        .vertical {
+            position: absolute;
+            top: 97;
+            left: 3;
+            transform: rotate(180deg);
+            writing-mode: vertical-lr;
+            text-align: center;
+
+            font-family: 'Khmer MN';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 64px;
+            /* line-height: 56px; */
+            color: #FF0000;
+
+            height: 450px;
+            /* width: 90px; */
+            pointer-events: none;
+            /* border: #FF0000;
+            border-style: solid; */
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+        }
+        .content {
+            float: left;
+        }
+
+        .container {
+            display: grid;
+            grid-auto-rows: minmax(min-content, max-content);
+            grid-template-columns: auto 1fr;
+            border-right: 1rem solid;
+        }
+    </style>
+
+
+    <script>
+        $(document).ready(function () {
+            // $("#content").load("intro.html")
+            $("img").hover(function () {
+                $(".overlay").css("opacigy", 1)
+                $(this).css("cursor", "pointer")
+                // $(this).css("background-color", "yellow");
+            }, function () {
+                $(".overlay").css("opacigy", 0)
+                // $(this).css("background-color", "pink");
+            });
+            $("img").click(function () {
+                $("#content").load("intro.html")
+                $("#content").css("background-color", "#ffffff")
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <div class="leftArea">
+            <div class="mainPng">
+                <img src="images/mainOff.png" />
+                <div class="overlay"><img src="images/main.png" /></div>
+            </div>
+            <div class="vertical">RED RUPIN. 2023</div>
+        </div>
+        <div id="content" class="content">
+            second
+        </div>
+    </div>
+</body>
+
+</html>
