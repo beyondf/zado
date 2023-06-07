@@ -1,84 +1,120 @@
 <!DOCTYPE html>
 <html>
 
-<head lang="en">
-    <meta charset="utf-8">
-    <title>Zado</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <style>
-        body {
-            background-color: black;
-        }
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
 
+    <link href="menuCss.css" rel="stylesheet">
+    <style>
         body,
         html {
+            margin: 0;
             width: 100%;
             height: 100%;
+            background-color: #1E1E1E;
         }
 
-        #menu {
-            position: absolute;
-            left: 0;
-            top: 0;
-            border-right: 0.5px solid #8C2126;
+        .leftArea {
             height: 100%;
             width: 100px;
+            position: fixed;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            background-color: black;
+            overflow-x: hidden;
+            /* transition: 0.5s; */
+            /* padding-top: 60px; */
+            border-right: 1px solid #8C2126;
         }
 
-        .title {
+        .mySidebar {
+            margin-left: 1px;
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 2;
+            top: 0;
+            left: 100px;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            /* padding-top: 60px; */
+            border-right: 1px solid #8C2126;
+        }
+
+        #intro {
+            margin-left: 100px;
+            transition: margin-left .5s;
+            min-height: 600px;
+            border: 0;
+            float: left;
+            height: 100%;
+            /* margin-top: -7px; */
+            /* margin-bottom: -7px; */
+            /* margin-right: 7px; */
+            /* margin-left: -7px; */
+        }
+
+        #main {
+            margin-left: 100px;
+            transition: margin-left .5s;
+            overflow: scroll;
+            min-height: 600px;
+            border: 0;
+            float: left;
+            height: 100%;
+            border-right: 1px solid #8C2126;
+            /* margin-top: -7px; */
+            /* margin-bottom: -7px; */
+            /* margin-right: 7px; */
+            /* margin-left: -7px; */
+        }
+
+        .sidenav a {
+            padding: 0;
+            text-decoration: none;
+            /* font-size: 22px; */
+            color: #ff0000;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav .closebtn {
             position: absolute;
-            left: 5px;
-            top: 100px;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
         }
 
-        .titleText {
-            /* position: absolute; */
-            /* left: -435px;
-            top: 100px; */
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
 
-            left: calc(50% - 0.5rem);
-            line-height: 1;
-            padding-top: 0.5rem;
-            position: relative;
-
-            font-family: 'Khmer MN';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 64px;
-            line-height: 116px;
-
-            /* width: fit-content;
-            block-size: fit-content; */
-
-            color: #FF0000;
-            transform-origin: top right;
-            transform: rotate(180deg);
-            white-space: nowrap;
-            writing-mode: vertical-rl;
-
-
+            .sidenav a {
+                font-size: 18px;
+            }
         }
 
         .mainPng {
-            position: absolute;
-            top: 16px;
-            left: 16px;
+            /* position: absolute; */
+            margin-top: 16px;
+            margin-left: 16px;
+            cursor: pointer;
         }
 
-        .leftSection {}
-
-        div {
-            display: block;
-        }
-
-        .container {
-            display: grid;
-            grid-auto-rows: minmax(min-content, max-content);
-            grid-template-columns: auto 1fr;
-            border-right: 1rem solid;
+        .mainPng:hover .overlay {
+            opacity: 1;
         }
 
         .vertical {
+            /* position: absolute; */
+            /* top: 97; */
+            /* left: 3; */
             transform: rotate(180deg);
             writing-mode: vertical-lr;
             text-align: center;
@@ -87,101 +123,205 @@
             font-style: normal;
             font-weight: 400;
             font-size: 64px;
-            line-height: 76px;
+            line-height: 120px;
             color: #FF0000;
 
-            height: 610px;
-            width: 90px;
-        }
-
-        .main-container {
-            margin-top: 0px;
-        }
-
-        .mainPng:hover .overlay {
-            opacity: 1;
+            height: 450px;
+            /* width: 90px; */
+            pointer-events: none;
+            /* border: #FF0000;
+            border-style: solid; */
         }
 
         .overlay {
             position: absolute;
-            top: 0;
-            bottom: 0;
+            margin-top: -69px;
+            margin-left: 16px;
             left: 0;
             right: 0;
-            height: 100%;
-            width: 100%;
             opacity: 0;
             transition: .5s ease;
-        }
-        .menu {
             pointer-events: none;
+            display: block;
         }
-        .vertical {
-            pointer-events: none;
+
+        .content-area {
+            width: 1400px;
+            min-width: 1400px;
+            height: 100%;
         }
-        .main-container {
-            left: 0px;
+
+        .content-box-close-button {
+            min-width: 76px;
+            position: relative;
             float: left;
+            left: -1px;
+            margin-top: 1px;
+            cursor: pointer;
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function openNav() {
+            // $("#main").load("iframe.html")
+            var width = myWidth = $("#mySidebar").width();
+
+            if (width < 363) {
+                $("#mySidebar").show()
+                document.getElementById("mySidebar").style.width = "364px";
+                document.getElementById("main").style.marginLeft = "464px";
+                $('.overlay').css('opacity', "1")
+            } else {
+                console.log("close")
+                $('.overlay').css('opacity', "0")
+                closeNav()
+            }
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0px";
+            document.getElementById("main").style.marginLeft = "93px";
+        }
+
+    </script>
+    <script>
+        // $(document).ready(function () {
+        //     $("#main").load("intro.html")
+
+        //     $("#mySidebar").hide()
+        //     $("#mySidebar").on('transitionend', function () {
+        //         var width = myWidth = $("#mySidebar").width();
+        //         if (width == 0) {
+        //             $("#mySidebar").hide()
+        //         }
+        //     });
+        // });
+
+    </script>
+
     <script>
         $(document).ready(function () {
-            $("img").hover(function () {
-                $(".overlay").css("opacigy", 1)
-                $(this).css("cursor", "pointer")
-                // $(this).css("background-color", "yellow");
-            }, function () {
-                $(".overlay").css("opacigy", 0)
-                // $(this).css("background-color", "pink");
+
+            var aniCount = 0;
+            function loopAnimate() {
+                var opacity = 1;
+                if (aniCount%2 == 0) {
+                    opacity = 0;
+                }
+                $('.overlay').animate({
+                    opacity: opacity,
+                }, 800, 'linear', function () {
+                    if (aniCount < 6) {
+                        console.log('animate complete: ' + aniCount)
+                        aniCount ++
+                        loopAnimate()
+                    } else {
+                        $('.overlay').css('transition', '1.0s ease');
+                    }
+                })
+            }
+            $('.overlay').css('transition', '.01s ease');
+            loopAnimate();
+
+            $("#intro").load("intro.html")
+            $("#main").hide();
+            $("#contentBoxCloseButton").hide()
+
+            $("#mySidebar").hide()
+            $("#mySidebar").on('transitionend', function () {
+                var width = myWidth = $("#mySidebar").width();
+                if (width == 0) {
+                    $("#mySidebar").hide()
+                }
             });
-            $("img").click(function () {
-                $("#content").load("test.html")
-                $("#content").css("background-color","#ffffff")
+
+            $('input.checkbox').on('change', function () {
+
+                if ($('input.checkbox').is(':checked')) {
+                    // 선택한 대메뉴 켜기
+                    $(this).parent().find('label .menu').addClass('selected');
+                    // + 하위 첫번째 메뉴 켜기
+                    $(this).parent().find('ul .menu.sub').first().addClass('selected');
+                    switch ($(this).parent().find('label .menu').attr("id")) {
+                        case "menu0": loadHTML("doc0_0.html"); break;
+                        case "menu1": loadHTML("doc1_0.html"); break;
+                        case "menu2": loadHTML("doc2_0.html"); break;
+                        case "menu3": loadHTML("doc3_0.html"); break;
+                        case "menu4": loadHTML("doc4_0.html"); break;
+                        case "menu5": loadHTML("doc5_0.html"); break;
+                    }
+
+                } else {
+                    // 선택했던 대메뉴 끄기
+                    $(this).parent().find('label .menu').removeClass('selected');
+                    // + 하위메뉴 끄기
+                    $(this).parent().find('ul .menu.sub').removeClass('selected');
+                }
+                // 다른 대메뉴 끄기
+                $('input.checkbox').not(this).prop('checked', false);
+                $('input.checkbox').not(this).parent().find('label .menu').removeClass('selected');
+                // 모든 서브메뉴 끄기
+                $('input.checkbox').not(this).parent().find('ul .menu.sub').removeClass('selected');
+
+            });
+
+            $('div.menu.sub').click(function (e) {
+                // 선택된 서브메뉴 켜기
+                $(this).addClass('selected')
+                // 나머지 서브메뉴 끄기
+                $('div.menu.sub').not(this).removeClass('selected')
+
+                console.log($(this).attr("id"))
+                switch ($(this).attr("id")) {
+                    case "menu0-0": loadHTML("doc0_0.html"); break;
+                    case "menu0-1": loadHTML("doc0_1.html"); break;
+
+                    case "menu2-0": loadHTML("doc2_0.html"); break;
+                    case "menu2-1": loadHTML("doc2_1.html"); break;
+                    case "menu2-2": loadHTML("doc2_2.html"); break;
+                }
             })
+
+            $('#contentBoxCloseButton').click(function (e) {
+                $("#contentBoxCloseButton").hide()
+
+                // 선택 끄기
+                $('label .menu').removeClass('selected');
+                $('ul .menu.sub').removeClass('selected');
+
+                // 펼쳐진 메뉴 접기 
+                $('input.checkbox').prop('checked', false);
+
+                loadHome();
+            })
+
+            $(function () {
+                $(window).bind('scroll resize', function () {
+                    // $('.content-box-close-button').css('top', $(this).scrollTop());
+                });
+            });
+
+            function loadHome() {
+                closeNav();
+                $("#intro").show();
+                $("#main").hide();
+                $('.overlay').css('opacity', "0")
+            }
+            function loadHTML(html) {
+                $("#intro").hide();
+                $("#main").show();
+                $("#main").load(html, function () {
+                    console.log('load complete')
+                    $(this).scrollTop(0)
+                });
+                $("#contentBoxCloseButton").show();
+            }
         });
     </script>
-</head>
 
-<body>
-    <div class="container">
-        <div class="mainPng">
-            <img src="images/mainOff.png" />
-            <div class="overlay"><img src="images/main.png" /></div>
-        </div>
-        <div class="vertical">RED RUPIN. 2023</div>
-        <div class="main-container" id="content">
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div id="container"></div>
-            <!-- <div id="info">
-            <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> -
-            marching cubes<br/>
-            based on greggman's <a href="https://webglsamples.org/blob/blob.html">blob</a>, original code by Henrik Rydgård
-        </div> -->
-
-            <!-- Import maps polyfill -->
-            <!-- Remove this when import maps will be widely supported -->
-            <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
-
-            <script type="importmap">
+    <script type="importmap">
             {
                 "imports": {
                     "three": "./build/three.module.js",
@@ -189,367 +329,182 @@
                 }
             }
         </script>
-
-            <script type="module">
-                import * as THREE from 'three';
-
-                import Stats from 'three/addons/libs/stats.module.js';
-
-                import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
-                import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-                import { MarchingCubes } from 'three/addons/objects/MarchingCubes.js';
-                import { ToonShader1, ToonShader2, ToonShaderHatching, ToonShaderDotted } from 'three/addons/shaders/ToonShader.js';
-
-                THREE.ColorManagement.enabled = false; // TODO: Consider enabling color management.
-
-                let container, stats;
-
-                let camera, scene, renderer;
-
-                let materials, current_material;
-
-                let light, pointLight, ambientLight;
-
-                let effect, resolution;
-
-                let effectController;
-
-                let time = 0;
-
-                const clock = new THREE.Clock();
-
-                init();
-                animate();
-
-                function init() {
-
-                    container = document.getElementById('container');
-
-                    // CAMERA
-
-                    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
-                    camera.position.set(- 500, 500, 1500);
-
-                    // SCENE
-
-                    scene = new THREE.Scene();
-                    scene.background = new THREE.Color(0x050505);
-
-                    // LIGHTS
-
-                    light = new THREE.DirectionalLight(0xffffff);
-                    light.position.set(0.5, 0.5, 1);
-                    scene.add(light);
-
-                    pointLight = new THREE.PointLight(0xff3300);
-                    pointLight.position.set(0, 0, 100);
-                    scene.add(pointLight);
-
-                    ambientLight = new THREE.AmbientLight(0x080808);
-                    scene.add(ambientLight);
-
-                    // MATERIALS
-
-                    materials = generateMaterials();
-                    current_material = 'shiny';
-
-                    // MARCHING CUBES
-
-                    resolution = 28;
-
-                    effect = new MarchingCubes(resolution, materials[current_material], true, true, 100000);
-                    effect.position.set(0, 0, 0);
-                    effect.scale.set(700, 700, 700);
-
-                    effect.enableUvs = false;
-                    effect.enableColors = false;
-
-                    scene.add(effect);
-
-                    // RENDERER
-
-                    renderer = new THREE.WebGLRenderer();
-                    renderer.setPixelRatio(window.devicePixelRatio);
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                    container.appendChild(renderer.domElement);
-
-                    // CONTROLS
-
-                    const controls = new OrbitControls(camera, renderer.domElement);
-                    controls.minDistance = 500;
-                    controls.maxDistance = 5000;
-
-                    // STATS
-
-                    stats = new Stats();
-                    // container.appendChild( stats.dom );
-
-                    // GUI
-
-                    setupGui();
-
-                    // EVENTS
-
-                    window.addEventListener('resize', onWindowResize);
-
-                }
-
-                //
-
-                function onWindowResize() {
-
-                    camera.aspect = window.innerWidth / window.innerHeight;
-                    camera.updateProjectionMatrix();
-
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-
-                }
-
-                function generateMaterials() {
-
-                    // environment map
-
-                    const path = './examples/textures/cube/SwedishRoyalCastle/';
-                    const format = '.jpg';
-                    const urls = [
-                        path + 'px' + format, path + 'nx' + format,
-                        path + 'py' + format, path + 'ny' + format,
-                        path + 'pz' + format, path + 'nz' + format
-                    ];
-
-                    const cubeTextureLoader = new THREE.CubeTextureLoader();
-
-                    const reflectionCube = cubeTextureLoader.load(urls);
-                    const refractionCube = cubeTextureLoader.load(urls);
-                    refractionCube.mapping = THREE.CubeRefractionMapping;
-
-                    // toons
-
-                    const toonMaterial1 = createShaderMaterial(ToonShader1, light, ambientLight);
-                    const toonMaterial2 = createShaderMaterial(ToonShader2, light, ambientLight);
-                    const hatchingMaterial = createShaderMaterial(ToonShaderHatching, light, ambientLight);
-                    const dottedMaterial = createShaderMaterial(ToonShaderDotted, light, ambientLight);
-
-                    const texture = new THREE.TextureLoader().load('./examples/textures/uv_grid_opengl.jpg');
-                    texture.wrapS = THREE.RepeatWrapping;
-                    texture.wrapT = THREE.RepeatWrapping;
-
-                    const materials = {
-                        'shiny': new THREE.MeshStandardMaterial({ color: 0x550000, envMap: reflectionCube, roughness: 0.1, metalness: 1.0 }),
-                        'chrome': new THREE.MeshLambertMaterial({ color: 0xffffff, envMap: reflectionCube }),
-                        'liquid': new THREE.MeshLambertMaterial({ color: 0xffffff, envMap: refractionCube, refractionRatio: 0.85 }),
-                        'matte': new THREE.MeshPhongMaterial({ specular: 0x111111, shininess: 1 }),
-                        'flat': new THREE.MeshLambertMaterial({ /*TODO flatShading: true */ }),
-                        'textured': new THREE.MeshPhongMaterial({ color: 0xffffff, specular: 0x111111, shininess: 1, map: texture }),
-                        'colors': new THREE.MeshPhongMaterial({ color: 0xffffff, specular: 0xffffff, shininess: 2, vertexColors: true }),
-                        'multiColors': new THREE.MeshPhongMaterial({ shininess: 2, vertexColors: true }),
-                        'plastic': new THREE.MeshPhongMaterial({ specular: 0x888888, shininess: 250 }),
-                        'toon1': toonMaterial1,
-                        'toon2': toonMaterial2,
-                        'hatching': hatchingMaterial,
-                        'dotted': dottedMaterial
-                    };
-
-                    return materials;
-
-                }
-
-                function createShaderMaterial(shader, light, ambientLight) {
-
-                    const u = THREE.UniformsUtils.clone(shader.uniforms);
-
-                    const vs = shader.vertexShader;
-                    const fs = shader.fragmentShader;
-
-                    const material = new THREE.ShaderMaterial({ uniforms: u, vertexShader: vs, fragmentShader: fs });
-
-                    material.uniforms['uDirLightPos'].value = light.position;
-                    material.uniforms['uDirLightColor'].value = light.color;
-
-                    material.uniforms['uAmbientLightColor'].value = ambientLight.color;
-
-                    return material;
-
-                }
-
-                //
-
-                function setupGui() {
-
-                    const createHandler = function (id) {
-
-                        return function () {
-
-                            current_material = id;
-
-                            effect.material = materials[id];
-                            effect.enableUvs = (current_material === 'textured') ? true : false;
-                            effect.enableColors = (current_material === 'colors' || current_material === 'multiColors') ? true : false;
-
-                        };
-
-                    };
-
-                    effectController = {
-
-                        material: 'shiny',
-
-                        speed: 1.0,
-                        numBlobs: 10,
-                        resolution: 28,
-                        isolation: 80,
-
-                        floor: true,
-                        wallx: false,
-                        wallz: false,
-
-                        dummy: function () { }
-
-                    };
-                    return
-                    let h;
-
-                    const gui = new GUI();
-
-                    // material (type)
-
-                    h = gui.addFolder('Materials');
-
-                    for (const m in materials) {
-
-                        effectController[m] = createHandler(m);
-                        h.add(effectController, m).name(m);
-
-                    }
-
-                    // simulation
-
-                    h = gui.addFolder('Simulation');
-
-                    h.add(effectController, 'speed', 0.1, 8.0, 0.05);
-                    h.add(effectController, 'numBlobs', 1, 50, 1);
-                    h.add(effectController, 'resolution', 14, 100, 1);
-                    h.add(effectController, 'isolation', 10, 300, 1);
-
-                    h.add(effectController, 'floor');
-                    h.add(effectController, 'wallx');
-                    h.add(effectController, 'wallz');
-
-                }
-
-                // this controls content of marching cubes voxel field
-
-                function updateCubes(object, time, numblobs, floor, wallx, wallz) {
-
-                    object.reset();
-
-                    // fill the field with some metaballs
-
-                    const rainbow = [
-                        new THREE.Color(0xff0000),
-                        new THREE.Color(0xff7f00),
-                        new THREE.Color(0xffff00),
-                        new THREE.Color(0x00ff00),
-                        new THREE.Color(0x0000ff),
-                        new THREE.Color(0x4b0082),
-                        new THREE.Color(0x9400d3)
-                    ];
-                    const subtract = 12;
-                    const strength = 1.2 / ((Math.sqrt(numblobs) - 1) / 4 + 1);
-
-                    for (let i = 0; i < numblobs; i++) {
-
-                        const ballx = Math.sin(i + 1.26 * time * (1.03 + 0.5 * Math.cos(0.21 * i))) * 0.27 + 0.5;
-                        const bally = Math.abs(Math.cos(i + 1.12 * time * Math.cos(1.22 + 0.1424 * i))) * 0.77; // dip into the floor
-                        const ballz = Math.cos(i + 1.32 * time * 0.1 * Math.sin((0.92 + 0.53 * i))) * 0.27 + 0.5;
-
-                        if (current_material === 'multiColors') {
-
-                            object.addBall(ballx, bally, ballz, strength, subtract, rainbow[i % 7]);
-
-                        } else {
-
-                            object.addBall(ballx, bally, ballz, strength, subtract);
-
-                        }
-
-                    }
-
-                    if (floor) object.addPlaneY(2, 12);
-                    if (wallz) object.addPlaneZ(2, 12);
-                    if (wallx) object.addPlaneX(2, 12);
-
-                    object.update();
-
-                }
-
-                //
-
-                function animate() {
-
-                    requestAnimationFrame(animate);
-
-                    render();
-                    stats.update();
-
-                }
-
-                function render() {
-
-                    const delta = clock.getDelta();
-
-                    time += delta * effectController.speed * 0.5;
-
-                    // marching cubes
-
-                    if (effectController.resolution !== resolution) {
-
-                        resolution = effectController.resolution;
-                        effect.init(Math.floor(resolution));
-
-                    }
-
-                    if (effectController.isolation !== effect.isolation) {
-
-                        effect.isolation = effectController.isolation;
-
-                    }
-
-                    updateCubes(effect, time, effectController.numBlobs, effectController.floor, effectController.wallx, effectController.wallz);
-
-                    // render
-
-                    renderer.render(scene, camera);
-
-                }
-
-            </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</head>
+
+<body>
+    <div class="leftArea">
+
+        <div class="mainPng">
+            <img src="images/mainOff.png" onclick="openNav()" />
+            <div class="overlay"><img src="images/main.png" /></div>
+        </div>
+        <div class="vertical">RED RUPIN. 2023</div>
+
+    </div>
+    <div class="mySidebar" id="mySidebar">
+        <menu role="banner">
+            <nav class="nav" role="navigation">
+                <ul class="nav__list">
+                    <li>
+                        <input id="group-1" type="checkbox" class="checkbox" hidden />
+                        <label for="group-1">
+                            <div class="menu" id="menu0">
+                                <div>소개<br />Introduction</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu0-0">
+                                    <div>Red Rupin. 2023</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu0-1">
+                                    <div>Personal Reason</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input id="group-2" type="checkbox" class="checkbox" hidden />
+                        <label for="group-2">
+                            <div class="menu" id="menu1">
+                                <div>추적 기록<br />His Track Record</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu1-0">
+                                    <div>Is He a Blood Dealer?</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu1-1">
+                                    <div>Where Does Money Go?</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu1-2">
+                                    <div>His Other Atrocities</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input id="group-3" type="checkbox" class="checkbox" hidden />
+                        <label for="group-3">
+                            <div class="menu" id="menu2">
+                                <div>지정헌혈<br />Directed Donation</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu2-0">
+                                    <div>의미<br />Meaning</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu2-1">
+                                    <div>필수 지참 사항<br />Must-Have Items</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu2-2">
+                                    <div>절차<br />Procedure</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input id="group-4" type="checkbox" class="checkbox" hidden />
+                        <label for="group-4">
+                            <div class="menu" id="menu3">
+                                <div>혈액 보유율<br />Blood Retention Rate</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu3-0">
+                                    <div>혈액 보유 현황<br />Retention Status</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu3-1">
+                                    <div>혈액 수급 위기단계<br />Crisis Stage</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu3-2">
+                                    <div>혈소판 제제 보유 현황<br />About Platelet Preparation</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input id="group-5" type="checkbox" class="checkbox" hidden />
+                        <label for="group-5">
+                            <div class="menu" id="menu4">
+                                <div> 어플리케이션<br />Application</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu4-0">
+                                    <div>지정헌혈<br />Designated Blood Donation</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu4-1">
+                                    <div>피플<br />People</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu4-2">
+                                    <div>레드커넥트<br />Red Connect</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input id="group-6" type="checkbox" class="checkbox" hidden />
+                        <label for="group-6">
+                            <div class="menu" id="menu5">
+                                <div>사연들<br />Red Stories</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu5-0">
+                                    <div>사람들의 이야기<br />Stories of People</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu5-1">
+                                    <div>필수 성과<br />Achievement</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </nav>
+            </meun>
+    </div>
+    <div class="content-area">
+        <div id="intro"></div>
+        <div id="main">
+            <!-- Main Content -->
+        </div>
+        <div class="content-box-close-button">
+            <img src="images/contentBoxCloseButton.png" id="contentBoxCloseButton" />
         </div>
     </div>
-    <div id="menu" class="menu"></div>
 </body>
 
 </html>
