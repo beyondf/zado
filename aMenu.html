@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multilevel Sliding Accordion Menu Demo</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="http://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
+<style>
+/* reset css */
+
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block }
+
+body { line-height: 1 }
+
+ol, ul { list-style: none }
+
+blockquote, q { quotes: none }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none
+}
+
+body {
+  font: 100% "roboto", "Trebuchet MS", sans-serif;
+  background-color:#1E1E1E;
+}
+
+a { text-decoration: none; }
+
+/**
+ * Hidden fallback
+ */
+
+
+/**
+ * Styling navigation
+ */
+
+menu {
+  margin-right: auto;
+  max-width: 364px;
+  /* box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25); */
+}
+
+/**
+ * Styling second level list items
+ */
+
+.sub-group-list a, .sub-group-list label {
+  padding-left: 4rem;
+  background: #353535;
+  /* box-shadow: inset 0 -1px #474747; */
+}
+
+.sub-group-list a:focus, .sub-group-list a:hover, .sub-group-list label:focus, .sub-group-list label:hover { background: #232323; }
+
+/**
+ * Hide nested lists
+ */
+
+.group-list, .sub-group-list, .sub-sub-group-list {
+  height: 100%;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .5s ease-in-out;
+  transition: max-height .5s ease-in-out;
+}
+
+.nav__list input[type=checkbox]:checked + label + ul { /* reset the height when checkbox is checked */
+max-height: 1000px; }
+
+.menu {
+  height: 90px;
+  border-bottom: 1px solid #8C2126;
+  color: #FF0000;
+  font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 20px;
+}
+.menu.selected {
+  height: 90px;
+  border-bottom: 1px solid #8C2126;
+  background-color: #8C2126;
+  color: #1E1E1E;
+  background-image: url("images/menuStar.png");
+  background-repeat: no-repeat;
+  background-position: 330px 4px;
+}
+.menu:hover {
+  background-color: #8C2126;
+  color: #1E1E1E;
+  cursor: pointer;
+}
+.menu:hover a {
+  color: #1E1E1E
+}
+.menu div {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding: 20px;
+}
+.menu.sub div {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding-left: 50px;
+}
+.menu-star {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('input.checkbox').on('change', function() {
+
+      if ($('input.checkbox').is(':checked')) {
+        // 선택한 대메뉴 켜기
+        $(this).parent().find('label .menu').addClass('selected');
+      } else {
+        // 선택했던 대메뉴 끄기
+        $(this).parent().find('label .menu').removeClass('selected');
+        // + 하위메뉴 끄기
+        $(this).parent().find('ul .menu.sub').removeClass('selected');
+      }
+      // 다른 대메뉴 끄기
+      $('input.checkbox').not(this).prop('checked', false);  
+      $('input.checkbox').not(this).parent().find('label .menu').removeClass('selected');
+      
+    });
+
+    $('div.menu.sub').click(function(e) {
+      // 선택된 서브메뉴 켜기
+      $(this).addClass('selected')
+      // 나머지 서브메뉴 끄기
+      $('div.menu.sub').not(this).removeClass('selected')
+    })
+  });
+</script>
+
+
+</head>
+
+<body>
+<menu role="banner">
+  <nav class="nav" role="navigation">
+    <ul class="nav__list">
+      <li>
+        <input id="group-1" type="checkbox" class="checkbox" hidden />
+        <label for="group-1"><div class="menu" id="menu0"> <div>소개<br/>Introduction</div></div></label>
+        <ul class="group-list">
+          <li><div class="menu sub" id="menu0-0"><div>Red Rupin. 2023</div></div></li>
+          <li><div class="menu sub" id="menu0-1"><div>Personal Reason</div></div></li>
+        </ul>
+      </li>
+
+      <li>
+        <input id="group-2" type="checkbox" class="checkbox" hidden />
+        <label for="group-2"><div class="menu"> <div>추적 기록<br/>His Track Record</div></div></label>
+        <ul class="group-list">
+          <li><div class="menu sub"><div>Is He a Blood Dealer?</div></div></li>
+          <li><div class="menu sub"><div>Where Does Money Go?</div></div></li>
+          <li><div class="menu sub"><div>His Other Atrocities</div></div></li>
+        </ul>
+      </li>
+      
+      <li>
+        <input id="group-3" type="checkbox" class="checkbox" hidden />
+        <label for="group-3"><div class="menu"> <div>지정헌혈<br />Directed Donation</div></div></label>
+        <ul class="group-list">
+          <li><div class="menu sub"><div>의미<br />Meaning</div></div></li>
+          <li><div class="menu sub"><div>필수 지참 사항<br />Must-Have Items</div></div></li>
+          <li><div class="menu sub"><div>절차<br />Procedure</div></div></li>
+        </ul>
+      </li>
+      
+      <li>
+        <input id="group-4" type="checkbox" class="checkbox" hidden />
+        <label for="group-4"><div class="menu"> <div>혈액 보유율<br />Blood Retention Rate</div></div></label>
+        <ul class="group-list">
+          <li><div class="menu sub"><div>혈액 보유 현황<br />Retention Status</div></div></li>
+          <li><div class="menu sub"><div>혈액 수급 위기단계<br />Crisis Stage</div></div></li>
+          <li><div class="menu sub"><div>혈소판 제제 보유 현황<br />About Platelet Preparation</div></div></li>
+        </ul>
+      </li>
+      
+      <li>
+        <input id="group-5" type="checkbox" class="checkbox" hidden />
+        <label for="group-5"><div class="menu"> <div> 어플리케이션<br />Application</div></div></label>
+        <ul class="group-list">
+          <li><div class="menu sub"><div>지정헌혈<br />Designated Blood Donation</div></div></li>
+          <li><div class="menu sub"><div>피플<br />People</div></div></li>
+          <li><div class="menu sub"><div>레드커넥트<br />Red Connect</div></div></li>
+        </ul>
+      </li>
+      
+      <li>
+        <input id="group-6" type="checkbox" class="checkbox" hidden />
+        <label for="group-6"><div class="menu"> <div>사연들<br />Red Stories</div></div></label>
+        <ul class="group-list">
+          <li><div class="menu sub"><div>사람들의 이야기<br />Stories of People</div></div></li>
+          <li><div class="menu sub"><div>필수 성과<br />Achievement</div></div></li>
+        </ul>
+      </li>
+      
+
+    </ul>
+  </nav>
+</meun>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <style>
+        @font-face {
+            font-family: 'SuncheonR';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/SuncheonR.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 100%;
+            /* Should be removed. Only for demonstration */
+            box-sizing: border-box;
+        }
+
+        .column.left {
+            padding: 30px 10px 25px 25px;
+        }
+
+        .column.right {
+            padding: 30px 25px 25px 10px;
+        }
+
+        .column.right .column.text-box.title {
+            width: 90px;
+        }
+        .column.right .column.text-box.body {
+            width: 280px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            min-width: 810px;
+            width: 810px;
+            content: "";
+            display: table;
+            clear: both;
+            box-sizing: border-box;
+        }
+
+        .text-box {
+            padding: 0;
+        }
+
+        .text-box.header {
+            font-family: 'SuncheonR';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 30px;
+            color: white;
+            height: 150px;
+        }
+
+        .text-box.title {
+            color: white;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 33px;
+            width: 60px;
+        }
+
+        .text-box.body {
+            color: #CCCCCC;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 33px;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .hline {
+            width: 370px;
+            height: 2px;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+
+        .column.right .hline {
+            background-color: #00FF00;
+        }
+
+        .column.right .text-box.header {
+            color: #00FF00
+        }
+
+        .column.right .text-box.title {
+            color: #00FF00
+        }
+
+        .column.right .text-box.body {
+            color: #00FF00
+        }
+
+        .content-box {
+            width: 810px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content-box">
+        <div class="row">
+            <div class="column left">
+                <div class="text-box header">
+                    지정헌혈이란?
+                </div>
+                <div class="hline"></div>
+                <div class="row">
+                    <div class="column text-box title">
+                        의미
+                    </div>
+                    <div class="column text-box body">
+                        헌혈자가 헌혈카페에서 의료기관 및 환자를 지정하여 헌혈하는 것을 말합니다.
+                    </div>
+                </div>
+
+                <div class="hline"></div>
+                <div class="row">
+                    <div class="column text-box title">
+                        요청
+                    </div>
+                    <div class="column text-box body">
+                        문진 시 헌혈자가 지정헌혈을 요청할 경우, 
+<지정헌혈의뢰서>를 자체 작성해 혈액과 함께 지정 
+병원에 보냅니다.
+                    </div>
+                </div>
+
+                <div class="hline"></div>
+                <div class="row">
+                    <div class="column text-box title">
+                        중요사항
+                    </div>
+                    <div class="column text-box body">
+                        지정헌혈을 원하는 헌혈자는 반드시 수혈자에게 수혈될 혈액의 종류 및 수혈 받을 병원 등에 대하여 정확하게 확인하시는 것이 중요합니다.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="column right">
+
+                <div class="text-box header">
+                    What is designated blood donation?
+                </div>
+
+                <div class="hline"></div>
+                <div class="row">
+                    <div class="column text-box title">
+                        Meaning
+                    </div>
+                    <div class="column text-box body">
+                        It refers to the designation of medical institutions and patients by a blood
+donor at a blood donation cafe.
+                    </div>
+                </div>
+
+                <div class="hline"></div>
+                <div class="row">
+                    <div class="column text-box title">
+                        Request
+                    </div>
+                    <div class="column text-box body">
+                        If a blood donor requests designated
+blood donation during a questionnaire,
+fill out the "Designated Blood
+Donation Request" and send it to the
+designated hospital with the blood.
+                    </div>
+                </div>
+
+                <div class="hline"></div>
+                <div class="row">
+                    <div class="column text-box title">
+                        Key Points
+                    </div>
+                    <div class="column text-box body">
+                        It is important for blood donors who
+want designated blood donation to
+accurately check the type of blood to
+be transfused and the hospital to be
+transfused.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

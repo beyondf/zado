@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
+
+    <link href="menuCss.css" rel="stylesheet">
+    <style>
+        body,
+        html {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1E1E1E;
+        }
+
+        .leftArea {
+            height: 100%;
+            width: 100px;
+            position: fixed;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            background-color: black;
+            overflow-x: hidden;
+            /* transition: 0.5s; */
+            /* padding-top: 60px; */
+            border-right: 1px solid #8C2126;
+        }
+
+        .mySidebar {
+            margin-left: 1px;
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 2;
+            top: 0;
+            left: 100px;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            /* padding-top: 60px; */
+            border-right: 1px solid #8C2126;
+        }
+
+        #intro {
+            margin-left: 100px;
+            transition: margin-left .5s;
+            min-height: 600px;
+            border: 0;
+            float: left;
+            height: 100%;
+            /* margin-top: -7px; */
+            /* margin-bottom: -7px; */
+            /* margin-right: 7px; */
+            /* margin-left: -7px; */
+        }
+
+        #main {
+            margin-left: 100px;
+            transition: margin-left .5s;
+            overflow: scroll;
+            min-height: 600px;
+            border: 0;
+            float: left;
+            height: 100%;
+            border-right: 1px solid #8C2126;
+            /* margin-top: -7px; */
+            /* margin-bottom: -7px; */
+            /* margin-right: 7px; */
+            /* margin-left: -7px; */
+        }
+
+        .sidenav a {
+            padding: 0;
+            text-decoration: none;
+            /* font-size: 22px; */
+            color: #ff0000;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+
+        .mainPng {
+            /* position: absolute; */
+            margin-top: 16px;
+            margin-left: 16px;
+            cursor: pointer;
+        }
+
+        .mainPng:hover .overlay {
+            opacity: 1;
+        }
+
+        .vertical {
+            /* position: absolute; */
+            /* top: 97; */
+            /* left: 3; */
+            transform: rotate(180deg);
+            writing-mode: vertical-lr;
+            text-align: center;
+
+            font-family: 'Khmer MN';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 64px;
+            line-height: 120px;
+            color: #FF0000;
+
+            height: 450px;
+            /* width: 90px; */
+            pointer-events: none;
+            /* border: #FF0000;
+            border-style: solid; */
+        }
+
+        .overlay {
+            position: absolute;
+            margin-top: -69px;
+            margin-left: 16px;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            transition: .5s ease;
+            pointer-events: none;
+            display: block;
+        }
+
+        .content-area {
+            width: 1400px;
+            min-width: 1400px;
+            height: 100%;
+        }
+
+        .content-box-close-button {
+            min-width: 76px;
+            position: relative;
+            float: left;
+            left: -1px;
+            margin-top: 1px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function openNav() {
+            // $("#main").load("iframe.html")
+            var width = myWidth = $("#mySidebar").width();
+
+            if (width < 363) {
+                $("#mySidebar").show()
+                document.getElementById("mySidebar").style.width = "364px";
+                document.getElementById("main").style.marginLeft = "464px";
+                $('.overlay').css('opacity', "1")
+            } else {
+                console.log("close")
+                $('.overlay').css('opacity', "0")
+                closeNav()
+            }
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0px";
+            document.getElementById("main").style.marginLeft = "93px";
+        }
+
+    </script>
+    <script>
+        // $(document).ready(function () {
+        //     $("#main").load("intro.html")
+
+        //     $("#mySidebar").hide()
+        //     $("#mySidebar").on('transitionend', function () {
+        //         var width = myWidth = $("#mySidebar").width();
+        //         if (width == 0) {
+        //             $("#mySidebar").hide()
+        //         }
+        //     });
+        // });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            var aniCount = 0;
+            function loopAnimate() {
+                var opacity = 1;
+                if (aniCount%2 == 0) {
+                    opacity = 0;
+                }
+                $('.overlay').animate({
+                    opacity: opacity,
+                }, 800, 'linear', function () {
+                    if (aniCount < 6) {
+                        console.log('animate complete: ' + aniCount)
+                        aniCount ++
+                        loopAnimate()
+                    } else {
+                        $('.overlay').css('transition', '1.0s ease');
+                    }
+                })
+            }
+            $('.overlay').css('transition', '.01s ease');
+            loopAnimate();
+
+            $("#intro").load("intro.html")
+            $("#main").hide();
+            $("#contentBoxCloseButton").hide()
+
+            $("#mySidebar").hide()
+            $("#mySidebar").on('transitionend', function () {
+                var width = myWidth = $("#mySidebar").width();
+                if (width == 0) {
+                    $("#mySidebar").hide()
+                }
+            });
+
+            $('input.checkbox').on('change', function () {
+
+                if ($('input.checkbox').is(':checked')) {
+                    // 선택한 대메뉴 켜기
+                    $(this).parent().find('label .menu').addClass('selected');
+                    // + 하위 첫번째 메뉴 켜기
+                    $(this).parent().find('ul .menu.sub').first().addClass('selected');
+                    switch ($(this).parent().find('label .menu').attr("id")) {
+                        case "menu0": loadHTML("doc0_0.html"); break;
+                        case "menu1": loadHTML("doc1_0.html"); break;
+                        case "menu2": loadHTML("doc2_0.html"); break;
+                        case "menu3": loadHTML("doc3_0.html"); break;
+                        case "menu4": loadHTML("doc4_0.html"); break;
+                        case "menu5": loadHTML("doc5_0.html"); break;
+                    }
+
+                } else {
+                    // 선택했던 대메뉴 끄기
+                    $(this).parent().find('label .menu').removeClass('selected');
+                    // + 하위메뉴 끄기
+                    $(this).parent().find('ul .menu.sub').removeClass('selected');
+                }
+                // 다른 대메뉴 끄기
+                $('input.checkbox').not(this).prop('checked', false);
+                $('input.checkbox').not(this).parent().find('label .menu').removeClass('selected');
+                // 모든 서브메뉴 끄기
+                $('input.checkbox').not(this).parent().find('ul .menu.sub').removeClass('selected');
+
+            });
+
+            $('div.menu.sub').click(function (e) {
+                // 선택된 서브메뉴 켜기
+                $(this).addClass('selected')
+                // 나머지 서브메뉴 끄기
+                $('div.menu.sub').not(this).removeClass('selected')
+
+                console.log($(this).attr("id"))
+                switch ($(this).attr("id")) {
+                    case "menu0-0": loadHTML("doc0_0.html"); break;
+                    case "menu0-1": loadHTML("doc0_1.html"); break;
+
+                    case "menu2-0": loadHTML("doc2_0.html"); break;
+                    case "menu2-1": loadHTML("doc2_1.html"); break;
+                    case "menu2-2": loadHTML("doc2_2.html"); break;
+                }
+            })
+
+            $('#contentBoxCloseButton').click(function (e) {
+                $("#contentBoxCloseButton").hide()
+
+                // 선택 끄기
+                $('label .menu').removeClass('selected');
+                $('ul .menu.sub').removeClass('selected');
+
+                // 펼쳐진 메뉴 접기 
+                $('input.checkbox').prop('checked', false);
+
+                loadHome();
+            })
+
+            $(function () {
+                $(window).bind('scroll resize', function () {
+                    // $('.content-box-close-button').css('top', $(this).scrollTop());
+                });
+            });
+
+            function loadHome() {
+                closeNav();
+                $("#intro").show();
+                $("#main").hide();
+                $('.overlay').css('opacity', "0")
+            }
+            function loadHTML(html) {
+                $("#intro").hide();
+                $("#main").show();
+                $("#main").load(html, function () {
+                    console.log('load complete')
+                    $(this).scrollTop(0)
+                });
+                $("#contentBoxCloseButton").show();
+            }
+        });
+    </script>
+
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
+    <script type="importmap">
+            {
+                "imports": {
+                    "three": "./build/three.module.js",
+                    "three/addons/": "./examples/jsm/"
+                }
+            }
+        </script>
+</head>
+
+<body>
+    <div class="leftArea">
+
+        <div class="mainPng">
+            <img src="images/mainOff.png" onclick="openNav()" />
+            <div class="overlay"><img src="images/main.png" /></div>
+        </div>
+        <div class="vertical">RED RUPIN. 2023</div>
+
+    </div>
+    <div class="mySidebar" id="mySidebar">
+        <menu role="banner">
+            <nav class="nav" role="navigation">
+                <ul class="nav__list">
+                    <li>
+                        <input id="group-1" type="checkbox" class="checkbox" hidden />
+                        <label for="group-1">
+                            <div class="menu" id="menu0">
+                                <div>소개<br />Introduction</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu0-0">
+                                    <div>Red Rupin. 2023</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu0-1">
+                                    <div>Personal Reason</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input id="group-2" type="checkbox" class="checkbox" hidden />
+                        <label for="group-2">
+                            <div class="menu" id="menu1">
+                                <div>추적 기록<br />His Track Record</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu1-0">
+                                    <div>Is He a Blood Dealer?</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu1-1">
+                                    <div>Where Does Money Go?</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu1-2">
+                                    <div>His Other Atrocities</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input id="group-3" type="checkbox" class="checkbox" hidden />
+                        <label for="group-3">
+                            <div class="menu" id="menu2">
+                                <div>지정헌혈<br />Directed Donation</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu2-0">
+                                    <div>의미<br />Meaning</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu2-1">
+                                    <div>필수 지참 사항<br />Must-Have Items</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu2-2">
+                                    <div>절차<br />Procedure</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input id="group-4" type="checkbox" class="checkbox" hidden />
+                        <label for="group-4">
+                            <div class="menu" id="menu3">
+                                <div>혈액 보유율<br />Blood Retention Rate</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu3-0">
+                                    <div>혈액 보유 현황<br />Retention Status</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu3-1">
+                                    <div>혈액 수급 위기단계<br />Crisis Stage</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu3-2">
+                                    <div>혈소판 제제 보유 현황<br />About Platelet Preparation</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input id="group-5" type="checkbox" class="checkbox" hidden />
+                        <label for="group-5">
+                            <div class="menu" id="menu4">
+                                <div> 어플리케이션<br />Application</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu4-0">
+                                    <div>지정헌혈<br />Designated Blood Donation</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu4-1">
+                                    <div>피플<br />People</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu4-2">
+                                    <div>레드커넥트<br />Red Connect</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input id="group-6" type="checkbox" class="checkbox" hidden />
+                        <label for="group-6">
+                            <div class="menu" id="menu5">
+                                <div>사연들<br />Red Stories</div>
+                            </div>
+                        </label>
+                        <ul class="group-list">
+                            <li>
+                                <div class="menu sub" id="menu5-0">
+                                    <div>사람들의 이야기<br />Stories of People</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu sub" id="menu5-1">
+                                    <div>필수 성과<br />Achievement</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </nav>
+            </meun>
+    </div>
+    <div class="content-area">
+        <div id="intro"></div>
+        <div id="main">
+            <!-- Main Content -->
+        </div>
+        <div class="content-box-close-button">
+            <img src="images/contentBoxCloseButton.png" id="contentBoxCloseButton" />
+        </div>
+    </div>
+</body>
+
+</html>
