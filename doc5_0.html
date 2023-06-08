@@ -1,0 +1,400 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <style>
+        @font-face {
+            font-family: 'SuncheonR';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/SuncheonR.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+            /* Should be removed. Only for demonstration */
+            box-sizing: border-box;
+            padding: 30px 25px 25px 25px;
+            color: #CCCCCC;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 33px;
+        }
+        .column.header {
+            padding: 30px 25px 10px 25px;
+        }
+        .column.body {
+            margin-bottom: 20px;
+        }
+        .column.left {
+            width: 50%;
+            padding: 30px 15px 25px 25px;
+        }
+
+        .column.right {
+            width: 50%;
+            padding: 30px 25px 25px 15px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            min-width: 810px;
+            width: 810px;
+            content: "";
+            display: table;
+            clear: both;
+            box-sizing: border-box;
+        }
+
+        .text-box {
+            padding: 0;
+        }
+
+        .text-box.header {
+            font-family: 'SuncheonR';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 29px;
+            color:#8976FF;
+            /* height: 150px; */
+        }
+
+        .text-box.title {
+            color: white;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 33px;
+            width: 60px;
+        }
+
+        .text-box.body {
+            color: #CCCCCC;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 33px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .hline {
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+
+        .column.right .hline {
+            background-color: #AD45FF;
+        }
+
+        .column.right .text-box.header {
+            color: #AD45FF
+        }
+
+        .column.right .text-box.title {
+            color: #AD45FF
+        }
+
+        .content-box {
+            float: left;
+            width: 810px;
+        }
+        hr.white {
+            border: 1px solid white;
+            width: 100%;
+            margin: 50px 0 0 0;
+        }
+        hr.purple {
+            border: 1px solid #8976FF;
+            width: 100%;
+            margin: 5px 0 0 0;
+        }
+        p.title-yellow {
+            font-size: 15px;
+            color: #FFFF00;
+        }
+        p.title-purple {
+            font-size: 19px;
+            color: #8976FF;
+        }
+        p.title-white {
+            font-size: 15px;
+            color: white
+        }
+        .icon-container {
+            width: 90%;
+            height: 130px;
+        }
+        .icon-div {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            color: #FFFF00;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 22px;
+        }
+        .icon-div.hmargin {
+            padding-left: 4px;
+        }
+        .icon-image {
+            padding-right: 15px;
+        }
+        .icon-selected {
+            position: relative;
+            left: 40px;
+            top: -35px
+        }
+        ul.a {
+            list-style-type: disc;
+            padding-inline-start: 20px;
+        }
+        .right-side-area {
+            width: 30px;
+            float: left;
+        }
+        .right-side-info {
+            display: flex;
+            align-items: center;
+            position: relative;
+            left: 585px;
+            top: 50px;
+            color: white;
+            width: 600px;
+            transform-origin: top left;
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+        .right-side-info span {
+            padding-left: 10px;
+            padding-right: 80px;
+        }
+        .right-side-info span.selected {
+            color: #FFFF00;
+        }
+        .table-row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .table-float {
+            width: 690px;
+            float: left;
+            font-family: 'Pretendard';
+            color: #CCCCCC;
+            font-size: 14px;
+            line-height: 30px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        .table-float.width-65 {
+            width: 65px;
+            color: #8976FF;
+        }
+        .table-float.right {
+            float: right;
+            color: #8976FF;
+        }
+        .float-right {
+            float: right;
+            color: #8976FF;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content-box">
+        <div class="row">
+            <div class="column">
+                <div class="text-box header">
+                    Red Stories
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column header">
+                <p class="title-purple">사람들의 이야기</p>
+            </div>
+
+            <div style="padding: 5px 25px 20px 25px;">
+                <hr class="purple" />
+                <div class="table-row">
+                    <div class="table-float width-65">환자명</div>
+                    <div class="table-float"><div>이재진 <div class="float-right">받은수량 2 / 필요수량 4</div></div></div>
+
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">필요혈액</div>
+                    <div class="table-float">AB+ 성분채혈 혈소판</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">의료기관</div>
+                    <div class="table-float">카톨릭관동대학교 국제성모병원</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">사연</div>
+                    <div class="table-float">우리아빠...저 결혼한지 딱 한달만에 급성골수성 백혈병에 걸리셨습니다. 평생 건강하셨던 아빠인데 갑자기 큰병이 찾아와서 
+                        매일 눈물로 지내고 있어요... 몸도 불편하신 엄마께서 간병하고 계시는데 두분 다 힘들어하셔서 마음이 너무 아프네요... 항암 5일차에 혈소판 수치가 계속 떨어져서 수혈받아야 한다는데 한번이 아니고 몇달 동안 주2~3번은 받아야 할수도 있다고 
+                        합니다.. AB형 혈소판이 구하기 힘든데 부디.. 가능하신 분 도움 부탁드립니다...</div>
+                </div>
+            </div>
+
+            <div style="padding: 5px 25px 20px 25px;">
+                <hr class="purple" />
+                <div class="table-row">
+                    <div class="table-float width-65">환자명</div>
+                    <div class="table-float"><div>이경숙 <div class="float-right">받은수량 0 / 필요수량 5</div></div></div>
+
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">필요혈액</div>
+                    <div class="table-float">A+ 성분채혈 혈소판</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">의료기관</div>
+                    <div class="table-float">연세대학교 신촌세브란스병원</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">사연</div>
+                    <div class="table-float">제발 도와주세요. 저희 언니에게 지정헌혈이 필요합니다.. 허리가 아파 병원에 갔는데, 암이 여기저기 퍼진 상태라고 합니다. 
+                        지금 백혈구 수치가 너무 높아 아무것도 할 수 없고 수혈이 급한 상황입니다. 꼭 좀 부탁드립니다..</div>
+                </div>
+            </div>
+
+            <div style="padding: 5px 25px 20px 25px;">
+                <hr class="purple" />
+                <div class="table-row">
+                    <div class="table-float width-65">환자명</div>
+                    <div class="table-float"><div>조영국 <div class="float-right">받은수량 2 / 필요수량 5</div></div></div>
+
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">필요혈액</div>
+                    <div class="table-float">B+ 농축적혈구</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">의료기관</div>
+                    <div class="table-float">카톨릭대학교 은평성모병원</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">사연</div>
+                    <div class="table-float">안녕하세요 국제성모병원 흉부외과입니다. 관상동맥증후군으로 심장수술(심장혈관우회술)이 필요한 분이 계십니다. 현재 
+                        미혼으로 고령의 보호자만 계시며 환자는 현재 질병으로 인해 직장을 다닐 수 없어 주변에 도움을 요청하기도 어려운 
+                        상태입니다. 혈액을 구하기 매우 어려운 상황으로 의료진인 저희가 지정헌혈 어플에 요청을 하게 되었습니다. 심장수술 시 
+                        필요혈액은 10개로 지정 헌혈 어플을 통해 5개 요청드리려고 합니다. 병원에서도 현재 혈액 수급이 어려워져 지정헌혈에 
+                        의지를 할 수 밖에 없는 상황입니다. 여러분의 많은 관심 부탁드립니다. 감사합니다.</div>
+                </div>
+            </div>
+
+            <div style="padding: 5px 25px 20px 25px;">
+                <hr class="purple" />
+                <div class="table-row">
+                    <div class="table-float width-65">환자명</div>
+                    <div class="table-float"><div>김재은 <div class="float-right">받은수량 1 / 필요수량 3</div></div></div>
+
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">필요혈액</div>
+                    <div class="table-float">A+ 전혈, 농축적혈구</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">의료기관</div>
+                    <div class="table-float">가톨릭대학교 서울성모병원</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">사연</div>
+                    <div class="table-float">쌍둥이 고위험산모 배우자입니다. 시험관 시술로 어렵게 가졌는데 애들이 세상 빛을 빨리 보고 싶은지.. 서두르네요. 
+                        고위험산모실 입원했는데 예정일을 못 채울 듯 합니다. 분만 시 지정헌혈이 필요해서 건강하게 태어날 수 있도록 도움 
+                        부탁드립니다. 저도 헌혈 27번밖에 못했지만, 나누며 살겠습니다. 일정 괜찮으시면 4월 26일부터 해주시면 감사하겠습니다.</div>
+                </div>
+            </div>
+
+            <div style="padding: 5px 25px 20px 25px;">
+                <hr class="purple" />
+                <div class="table-row">
+                    <div class="table-float width-65">환자명</div>
+                    <div class="table-float"><div>오현욱 <div class="float-right">받은수량 0 / 필요수량 2</div></div></div>
+
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">필요혈액</div>
+                    <div class="table-float">A+ 성분채혈 혈소판</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">의료기관</div>
+                    <div class="table-float">연세대학교 신촌세브란스병원</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">사연</div>
+                    <div class="table-float">현욱이는 12살입니다. 급성골수성백혈병 진단을 받고, 항암후 재발하여, 골수이식을 받았지만, 다시 재발을 해서 항암을 
+                        한후에 암세포수치 여부를 확인하고 면역치료를 해보려고 한다는 말씀을 듣고, 항암을 하는중에 혈소판 수치가 급격하게 
+                        떨어졌습니다. 지인에게도 부탁을 했으나 더 필요한 상태라서 부탁드립니다.</div>
+                </div>
+            </div>
+
+ 
+            <div style="padding: 5px 25px 20px 25px;">
+                <hr class="purple" />
+                <div class="table-row">
+                    <div class="table-float width-65">환자명</div>
+                    <div class="table-float"><div>허가연 <div class="float-right">받은수량 1 / 필요수량 3</div></div></div>
+
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">필요혈액</div>
+                    <div class="table-float">B+ 성분채혈 혈소판</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">의료기관</div>
+                    <div class="table-float">가톨릭관동대학교 국제성모병원</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-float width-65">사연</div>
+                    <div class="table-float">이제 대학에 입학한 여학생입니다. 급성백혈병을 진단받고 휴학하여 입원 치료중입니다. 매주마다 두개씩 혈소판 수혈이 
+                        필요합니다. 필요기간이 6월까지입니다. 초등학교 5학년말 뇌출혈로 수술후 회복되어 일상생활이 가능할정도로 많이 
+                        좋아져서 대학입학을 기대하며 준비하였습니다. 그러나 갑자기 찾아온 급성백혈병이라니 너무나 안타깝고 마음이 아픕니다. 부모로서 해줄수있는게 이렇게 헌혈요청밖에 없다는것이 더 속상합니다. 부디 헌혈을 부탁드립니다. 가능하다면 월요일과 
+                        목요일에 지정헌혈해주시면 더 도움이 될 것같습니다. 감사합니다.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

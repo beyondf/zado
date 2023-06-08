@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <style>
+        @font-face {
+            font-family: 'SuncheonR';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/SuncheonR.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 100%;
+            /* Should be removed. Only for demonstration */
+            box-sizing: border-box;
+        }
+
+        .column.left {
+            padding: 30px 10px 25px 25px;
+        }
+
+        .column.right {
+            padding: 30px 25px 25px 10px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            min-width: 810px;
+            width: 810px;
+            content: "";
+            display: table;
+            clear: both;
+            box-sizing: border-box;
+        }
+
+        .text-box {
+            padding: 0;
+        }
+
+        .text-box.header {
+            font-family: 'SuncheonR';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 29px;
+            color: white;
+            height: 150px;
+        }
+
+        .text-box.title {
+            color: white;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 33px;
+            width: 100px;
+        }
+
+        .text-box.body {
+            color: #CCCCCC;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 33px;
+            width: 260px;
+            margin-bottom: 20px;
+        }
+        .text-box.body.w-360 {
+            width: 360px;
+        }
+        .text-box.body.w-180 {
+            width: 180px;
+        }
+        .text-box.body.w-140 {
+            width: 140px;
+        }
+        .text-box.body.w-100 {
+            width: 100px;
+        }
+        .text-box.body.w-90 {
+            width: 90px;
+        }
+        .text-box.body.w-80 {
+            width: 80px;
+        }
+
+        .hline {
+            width: 370px;
+            height: 2px;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+        hr {
+            width: 100%;
+            margin: 0px 0 20px 0;
+        }
+        hr.white {
+            border: 1px solid white;
+        }
+        hr.cyan {
+            border: 1px solid cyan;
+        }
+        hr.green {
+            border: 1px solid #00FF00;
+        }
+        hr.margin-top-30 {
+            margin-top: 30px;
+        }
+        .column.right .hline {
+            background-color: #AD45FF;
+        }
+
+        /* .column.right .text-box.header {
+            color: #AD45FF
+        }
+
+        .column.right .text-box.title {
+            color: #AD45FF
+        }
+
+        .column.right .text-box.body {
+            color: #C57AFF
+        } */
+
+        .content-box {
+            width: 810px;
+        }
+
+        p.title {
+            font-size: 19px;
+            padding-bottom: 20px;
+        }
+        p.title.cyan {
+            color: cyan;
+        }
+        .text-box.cyan {
+            color: cyan;
+        }
+        p.title.green {
+            color: #00FF00;
+        }
+        .text-box.green {
+            color: #00FF00;
+        }
+        ul.a {
+            list-style-type: disc;
+            padding-inline-start: 20px;
+        }
+        span.blue {
+            color: blue;
+        }
+        span.red {
+            color: red;
+        }
+        span.orange {
+            color: orange;
+        }
+        span.green {
+            color: #00FF00;
+        }
+        span.yellow {
+            color: yellow;
+        }
+        .valign-middle {
+            margin: 0;
+            top: 50%;
+            transform: translateY(50%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content-box">
+        <div class="row">
+            <div class="column left">
+                <div class="text-box header">
+                    혈액 보유율
+                </div>
+                <hr class="white">
+                <div class="row">
+                    <div class="column text-box body w-360">
+                        <p class="title">혈액 보유 현황</p>
+                        <ul class="a">
+                        <li>매일 00:00 기준</li>
+                        <li>현재 혈액 보유량 = 의료기관에 공급 가능한 재고 + 검사 대기 혈액 재고</li>
+                        <li>(검사 대기 혈액: 검사종료 후 의료기관 공급 가능 혈액)</li>
+                        <li>적정 혈액 보유량: 일평균 5일분 이상</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="white margin-top-30">
+                <div class="row">
+                    <div class="column text-box body w-360">
+                        <p class="title">혈액 수급 위기단계</p>
+                        <ul class="a">
+                        <li><span class="blue">관심(Blue)</span> : 혈액 수급 부족 징후, 적혈구 제제 5일분 미만
+                            <br/>징후 감시 활동</li>
+                            
+                            <li><span class="yellow">주의(Yellow)</span> : 혈액 수급 부분적 부족, 적혈구제제 3일분 미만
+                            <br/>협조 체제 가동</li>
+                            
+                            <li><span class="orange">경계(Orange)</span> : 혈액 수급 부족 지속, 적혈구제제 2일분 미만 
+                            <br/>대비 계획 점검</li>
+                            
+                            <li><span class="red">심각(Red)</span> : 혈액 수급 부족 규모 확대, 적혈구제제 1일분 미만 
+                            <br/>즉각 대응 태세 돌입</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="green margin-top-30">
+                <div class="row">
+                    <div class="column text-box">
+                        <p class="title green">혈소판 제제 보유 현황</p>
+                    </div>
+                </div>
+
+                <hr class="green">
+                <p class="title green">농축 혈소판</p>
+                <div class="row">
+                    <div class="column text-box title green">
+                        1일 소요량
+                    </div>
+                    <div class="column text-box body w-180 green">
+                        <p>O형 - 152 / A형 - 208</p>
+                        <p>B형 - 169 / AB형 - 92</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle green" style="float: right; text-align: right;">
+                        합계 - 621
+                    </div>
+                </div>
+
+                <hr class="green">
+                <div class="row">
+                    <div class="column text-box title green">
+                        현재 보유량 
+                    </div>
+                    <div class="column text-box body w-180 green">
+                        <p>O형 - 1,990 / A형 - 2,313</p>
+                        <p>B형 - 1,889 / AB형 - 787</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle green" style="float: right; text-align: right;">
+                        합계 - 6,976
+                    </div>
+                </div>
+
+                <hr class="green">
+                <div class="row">
+                    <div class="column text-box title green">
+                        보유율 
+                    </div>
+                    <div class="column text-box body w-180 green">
+                        <p>O형 - 160% / A형 - 150% </p>
+                        <p>B형 - 160% / AB형 - 160%</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle green" style="float: right; text-align: right;">
+                        합계 - 160%
+                    </div>
+                </div>
+
+                <hr class="cyan">
+                <p class="title cyan">성분 채혈 혈소판</p>
+                <div class="row">
+                    <div class="column text-box title cyan">
+                        1일 소요량
+                    </div>
+                    <div class="column text-box body w-180 cyan">
+                        <p>O형 - 152 / A형 - 208</p>
+                        <p>B형 - 169 / AB형 - 92</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle cyan" style="float: right; text-align: right;">
+                        합계 - 621
+                    </div>
+                </div>
+
+                <hr class="cyan">
+                <div class="row">
+                    <div class="column text-box title cyan">
+                        현재 보유량 
+                    </div>
+                    <div class="column text-box body w-180 cyan">
+                        <p>O형 - 340 / A형 - 423</p>
+                        <p>B형 - 305 / AB형 - 155</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle cyan" style="float: right; text-align: right;">
+                        합계 - 1,223
+                    </div>
+                </div>
+
+                <hr class="cyan">
+                <div class="row">
+                    <div class="column text-box title cyan">
+                        보유율 
+                    </div>
+                    <div class="column text-box body w-180 cyan">
+                        <p>O형 - 220% / A형 - 200%</p>
+                        <p>B형 - 180% / AB형 - 170%</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle cyan" style="float: right; text-align: right;">
+                        합계 - 200%
+                    </div>
+                </div>
+            </div>
+
+            <div class="column right">
+
+                <div class="text-box header">
+                    Blood Retention Rate
+                </div>
+                <hr class="white">
+                <div class="row">
+                    <div class="column text-box body w-360">
+                        <p class="title">Blood Retention Status</p>
+                        <ul class="a">
+                        <li>As of 00:00 every day</li>
+                        <li>Current blood reserves = stock available to medical institutions + stock waiting for testing</li>
+                        <li>(Blood waiting for examination: Blood that can be supplied to medical institutions after completion of examination)</li>
+                        <li>Proper amount of blood: 5 days or more on average per day</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="white margin-top-30">
+                <div class="row">
+                    <div class="column text-box body w-360">
+                        <p class="title">Blood Supply and Demand Crisis Stage</p>
+                        <ul class="a">
+                            <li><span class="blue">Attention (Blue)</span> Signs of lack of blood supply and demand, red blood cell preparations for less than 5 days
+                            a sign-monitoring activity</li>
+
+                            <li><span class="yellow">Caution (Yellow)</span> partial shortage of blood supply, less than 3 days of red blood cell preparations
+                            coordinated operation</li>
+
+                            <li><span class="orange">Boundary (Orange)</span> Lack of blood supply and demand continues, red blood cell preparations for less than 2 days 
+                            Check the contrast plan</li>
+
+                            <li><span class="red">Serious (Red)</span> Increased blood supply and demand, less than 1 day of red blood cell preparations 
+                            Ready to respond immediately</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="green margin-top-30">
+                <div class="row">
+                    <div class="column text-box">
+                        <p class="title green">Current Status of Platelet Preparation</p>
+                    </div>
+                </div>
+
+                <hr class="green">
+                <p class="title green">Concentrated platelet</p>
+                <div class="row">
+                    <div class="column text-box title green">
+                        Daily requirement
+                    </div>
+                    <div class="column text-box body w-180 green">
+                        <p>O - 152 / A - 208</p>
+                        <p>B - 169 / AB - 92</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle green" style="float: right; text-align: right;">
+                        Total - 621
+                    </div>
+                </div>
+
+                <hr class="green">
+                <div class="row">
+                    <div class="column text-box title green">
+                        Current retained
+                    </div>
+                    <div class="column text-box body w-180 green">
+                        <p>O - 1,990 / A - 2,313</p>
+                        <p>B - 1,889 / AB - 787</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle green" style="float: right; text-align: right;">
+                        Total - 6,976
+                    </div>
+                </div>
+
+                <hr class="green">
+                <div class="row">
+                    <div class="column text-box title green">
+                        Retention rate
+                    </div>
+                    <div class="column text-box body w-180 green">
+                        <p>O - 160% / A - 150% </p>
+                        <p>B - 160% / AB - 160%</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle green" style="float: right; text-align: right;">
+                        Total - 160%
+                    </div>
+                </div>
+
+                <hr class="cyan">
+                <p class="title cyan">Blood platelet</p>
+                <div class="row">
+                    <div class="column text-box title cyan">
+                        Daily requirement
+                    </div>
+                    <div class="column text-box body w-180 cyan">
+                        <p>O - 152 / A - 208</p>
+                        <p>B - 169 / AB - 92</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle cyan" style="float: right; text-align: right;">
+                        Total - 621
+                    </div>
+                </div>
+
+                <hr class="cyan">
+                <div class="row">
+                    <div class="column text-box title cyan">
+                        Current retained
+                    </div>
+                    <div class="column text-box body w-180 cyan">
+                        <p>O - 340 / A - 423</p>
+                        <p>B - 305 / AB - 155</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle cyan" style="float: right; text-align: right;">
+                        Total - 1,223
+                    </div>
+                </div>
+
+                <hr class="cyan">
+                <div class="row">
+                    <div class="column text-box title cyan">
+                        Retention rate
+                    </div>
+                    <div class="column text-box body w-180 cyan">
+                        <p>O - 220% / A - 200%</p>
+                        <p>B - 180% / AB - 170%</p>
+                    </div>
+                    <div class="text-box body w-90 valign-middle cyan" style="float: right; text-align: right;">
+                        Total - 200%
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>

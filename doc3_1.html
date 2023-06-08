@@ -29,7 +29,7 @@
             line-height: 33px;
         }
         .column.header {
-            padding: 30px 25px 0px 25px;
+            padding: 30px 25px 10px 25px;
         }
         .column.body {
             margin-bottom: 20px;
@@ -64,8 +64,8 @@
             font-weight: 400;
             font-size: 32px;
             line-height: 29px;
-            color: white;
-            height: 150px;
+            color:#FF00FF;
+            /* height: 150px; */
         }
 
         .text-box.title {
@@ -110,16 +110,25 @@
 
         .content-box {
             float: left;
-            width: 780px;
+            width: 810px;
         }
         hr.white {
             border: 1px solid white;
             width: 100%;
-            margin: 50px 0 0 0;
+            margin: 50px 0 20px 0;
+        }
+        hr.purple {
+            border: 1px solid #8976FF;
+            width: 100%;
+            margin: 5px 0 0 0;
         }
         p.title-yellow {
             font-size: 15px;
             color: #FFFF00;
+        }
+        p.title-purple {
+            font-size: 19px;
+            color: #8976FF;
         }
         p.title-white {
             font-size: 15px;
@@ -180,6 +189,42 @@
         .right-side-info span.selected {
             color: #FFFF00;
         }
+        .table-row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .table-float {
+            width: 690px;
+            float: left;
+            font-family: 'Pretendard';
+            color: #CCCCCC;
+            font-size: 14px;
+            line-height: 30px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        .table-float.width-65 {
+            width: 65px;
+            color: #8976FF;
+        }
+        .table-float.right {
+            float: right;
+            color: #8976FF;
+        }
+        .float-right {
+            float: right;
+            color: #8976FF;
+        }
+        ol {
+            list-style-type: decimal;
+            padding-inline-start: 20px;
+        }
+        p.title {
+            font-size: 19px;
+            padding-bottom: 20px;
+        }
+
     </style>
 </head>
 
@@ -188,71 +233,33 @@
     <div class="content-box">
         <div class="row">
             <div class="column">
-            <div class="icon-container">
-                <div class="icon-div"><img src="images/applicationDesignatedBloodDonation.png" width="33" height="25" class="icon-image" /></div>
-                <div class="icon-div hmargin"><img src="images/applicationPeople.png" width="19" height="25" class="icon-image" />People</div>
-                <div class="icon-div hmargin"><img src="images/applicationRedConnect.png" width="18" height="25" class="icon-image" /></div>
-                <div class="icon-selected">
-                    <img src="images/applicationPeople.png" />
+                <div class="text-box header">
+                    Blood Retention Rate
                 </div>
             </div>
-            </div>
         </div>
-        <div class="row" style="padding-left: 35px;">
+        <div class="row">
             <div class="column header">
-                <p class="title-yellow">나랑 같이 피플할래?</p>
-                <p>피플 앱을 통해 헌혈과 관련한 모든 것을 해결해 보세요. 업그레이드 된 피플 앱이 출시 됐어요.</p>
+                <p class="title-white">혈액 보유 현황</p>
+                <ol>
+                    <li>매일 00:00 기준</li>
+                    <li>현재 혈액 보유량 = 의료기관 공급 가능한 재고 + 검사 대기 혈액 재고
+                    <br/>(검사 대기 혈액: 검사종료 후 의료기관 공급 가능 혈액)</li>
+                    <li>적정 혈액 보유량: 일평균 5일분 이상</li>
+                </ol>
+            </div>
+
+            <div style="padding: 5px 25px 20px 25px;">
                 <hr class="white" />
-            </div>
-            <div class="column left">
                 <div class="row">
                     <div class="column text-box body">
-                        <p class="title-white">#홈화면</p>
-                        <p>홈 화면에서 실시간으로 주고받은 감사메시지 및 오늘의 헌혈자를 확인해보세요!</p>
-                        <br/>
-                        <p class="title-white">#피플 사연</p>
-                        <p>지금 당장 헌혈이 필요한 환자들의 지정헌혈 요청 사연들을 만나봐요. '채팅으로 도움주기' 버튼을 눌러 사연자와 직접 대화를 통해 도움을 주고 받을 수 있어요.</p>
-                        <br/>
-                        <p class="title-white">#피플 생활</p>
-                        <p>피플 앱 회원들이 헌혈과 관련한 이야기들을 나눌 수 있는 커뮤니티 기능이 추가됐어요. 피플 생활 페이지를 통해 헌혈과 관련된 이야기는 물론, 자유 이야기를 마음껏 나눠보세요.</p>
-                        <br/>
-                        <p class="title-white">#채팅 페이지</p>
-                        <p>채팅 기능을 활용해 위급한 환자에게 직접적인 도움을 주세요. 채팅을 통해 따듯한 마음을 주고 받을 수 있어요.</p>
+                        <p class="title">혈액 보유 현황</p>
 
+                        혈액 수급 위기단계 - Crisis Stage 내용이 와야할거 같은데...
                     </div>
                 </div>
             </div>
 
-            <div class="column right">
-
-                <div class="row">
-                    <div class="column text-box body">
-                        <p class="title-white">#마이페이지</p>
-                        <p>마이페이지에서 프로필 수정을 통해 홈화면에서의 비춰질 프로필을 꾸며보세요. 피플 앱에서 나눈 따듯한 마음에 대한 기록을 보관하세요. 포인트를 모아 상점을 활용할 수 있는 포인트 상점도 확인할 수 있어요. 지금 바로 피플과 함께 세상에 따듯함을 전해주세요!</p>
-                        <br/>
-                        <p class="title-white">[새로운 기능]</p>
-                        <ul class="a">
-                        <li>피플 사연/생활 통합, 커뮤니티 추가</li>
-                        <li>피플 사연 배너 변경</li>
-                        <li>구매 복원 기능 추가 및 별도 후원 오카방 제거</li>
-                        </ul>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="right-side-area">
-        <div style="float:right">
-            <div class="right-side-info">
-                <img src="images/applicationDesignatedBloodDonation.png" width="25" height="18" hidden/>
-                <span>지정헌혈</span>
-                <img src="images/applicationPeople.png" width="15" height="20"/>
-                <span class="selected">피플</span>
-                <img src="images/applicationRedConnect.png" width="14" height="20" hidden/>
-                <span>레드커넥트</span>
-            </div>
         </div>
     </div>
 </body>
