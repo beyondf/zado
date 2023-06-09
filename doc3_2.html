@@ -29,10 +29,10 @@
             line-height: 33px;
         }
         .column.header {
-            padding: 30px 25px 10px 25px;
+            padding: 30px 25px 0 25px;
         }
         .column.body {
-            margin-bottom: 20px;
+            padding: 0 25px  0 25px;
         }
         .column.left {
             width: 50%;
@@ -115,7 +115,7 @@
         hr.white {
             border: 1px solid white;
             width: 100%;
-            margin: 50px 0 20px 0;
+            margin: 0px 0 20px 0;
         }
         hr.purple {
             border: 1px solid #8976FF;
@@ -243,18 +243,20 @@
                 <p class="title-white">혈액 보유 현황</p>
             </div>
             <div class="column body">
-                <ol>
-                    <li>매일 00:00 기준</li>
-                    <li>현재 혈액 보유량 = 의료기관 공급 가능한 재고 + 검사 대기 혈액 재고
-                    <br/>(검사 대기 혈액: 검사종료 후 의료기관 공급 가능 혈액)</li>
-                    <li>적정 혈액 보유량: 일평균 5일분 이상</li>
-                </ol>
+                <div class="text-box body">
+                    <ol>
+                        <li>매일 00:00 기준</li>
+                        <li>현재 혈액 보유량 = 의료기관 공급 가능한 재고 + 검사 대기 혈액 재고
+                        <br/>(검사 대기 혈액: 검사종료 후 의료기관 공급 가능 혈액)</li>
+                        <li>적정 혈액 보유량: 일평균 5일분 이상</li>
+                    </ol>
+                </div>
             </div>
 
             <div style="padding: 5px 25px 20px 25px;">
                 <hr class="white" />
                 <div class="row">
-                    <div class="column text-box body">
+                    <div class="column text-box">
                         <p class="title">보유 현황 추이</p>
                         <p>image</p>
                         <p class="title">혈소판 제제 보유 현황</p>
