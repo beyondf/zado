@@ -1,0 +1,348 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <style>
+        @font-face {
+            font-family: 'SuncheonR';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/SuncheonR.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+            /* Should be removed. Only for demonstration */
+            box-sizing: border-box;
+            padding: 30px 25px 25px 25px;
+            color: #CCCCCC;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 33px;
+        }
+        .column.header {
+            /* float: right; */
+            padding: 25px 20px 25px 20px;
+            margin-left: 25px;
+            border: 1px solid #FF0000;
+            width: 700px;
+        }
+        .column.body {
+            margin-bottom: 20px;
+        }
+        .column.left {
+            width: 50%;
+            padding: 30px 15px 25px 25px;
+        }
+
+        .column.right {
+            width: 50%;
+            padding: 30px 25px 25px 15px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            min-width: 810px;
+            width: 810px;
+            content: "";
+            display: table;
+            clear: both;
+            box-sizing: border-box;
+        }
+
+        .text-box {
+            padding: 0;
+        }
+
+        .text-box.header {
+            font-family: 'SuncheonR';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 29px;
+            color: white;
+            height: 150px;
+        }
+
+        .text-box.title {
+            color: white;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 33px;
+            width: 60px;
+        }
+
+        .text-box.body {
+            color: #CCCCCC;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 33px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .hline {
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+
+        .column.right .hline {
+            background-color: #AD45FF;
+        }
+
+        .column.right .text-box.header {
+            color: #AD45FF
+        }
+
+        .column.right .text-box.title {
+            color: #AD45FF
+        }
+
+        .content-box {
+            float: left;
+            width: 780px;
+        }
+        hr.white {
+            border: 1px solid white;
+            width: 100%;
+            margin: 20px 0 20px;
+        }
+        hr.cyan {
+            border: 1px solid #00FFFF;
+            width: 100%;
+            margin: 20px 0 20px;
+        }
+        hr.bottom {
+            margin-bottom: 55px;
+        }
+        p.title-yellow {
+            font-size: 15px;
+            color: #FFFF00;
+        }
+        p.title-white {
+            font-size: 15px;
+            color: white
+        }
+        .icon-container {
+            width: 90%;
+            height: 130px;
+            float: left;
+        }
+        .icon-div {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            color: #FFFF00;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 22px;
+        }
+        .icon-div.hmargin {
+            padding-left: 4px;
+        }
+        .icon-image {
+            padding-right: 5px;
+        }
+        .icon-selected {
+            position: relative;
+            left: 40px;
+            top: -75px
+        }
+        .right-side-area {
+            width: 30px;
+            float: left;
+        }
+        .right-side-info {
+            display: flex;
+            align-items: center;
+            position: relative;
+            left: 585px;
+            top: 50px;
+            color: white;
+            width: 600px;
+            transform-origin: top left;
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+        .right-side-info span {
+            padding-left: 10px;
+            padding-right: 80px;
+        }
+        .right-side-info span.selected {
+            color: #FFFF00;
+        }
+        p {
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 500;
+        }
+        p.title {
+            font-size: 19px;
+            color: #00FFFF;
+            padding-bottom: 20px;
+        }
+        p.title.white {
+            font-size: 14px;
+            color: #FFFFFF;
+            padding-bottom: 0px;
+            font-weight: 600;
+        }
+        p.title.cyan {
+            font-size: 14px;
+            color: #00FFFF;
+            padding-bottom: 0px;
+            font-weight: 600;
+        }
+        p.white {
+            font-weight: 400;
+            font-size: 14px;
+            color: white;
+            padding-bottom: 0px;
+        }
+        p.cyan {
+            font-weight: 400;
+            font-size: 14px;
+            color: #00FFFF;
+            padding-bottom: 0px;
+        }
+        .sub-page-container {
+            width: 100%;
+            float: left;
+            height: 30px;
+        }
+        div.circle {
+            margin: 10px 5px ;
+            float: left;
+            width:12px;
+            height:12px;
+            border-radius:6px;
+            background:#00FFFF;
+        }
+        div.circle.right {
+            margin: 6px ;
+            float: left;
+            width:8px;
+            height:8px;
+            border-radius:4px;
+            background:#00FFFF;
+        }
+        div.selected-sub {
+            float: left;
+            margin-left: 10px;
+            font-size: 19px;
+            color: #00FFFF;
+        }
+        div.selected-sub.right {
+            padding-right: 80px;
+            float: left;
+            margin-left: 10px;
+            font-size: 14px;
+            color: #FFFFFF;
+        }
+        div.selected-sub.right.selected {
+            color: #00FFFF;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content-box">
+        <div class="row">
+            <div class="column">
+                <p class="title">His Track Record</p>
+                <div class="sub-page-container">
+                    <div><div class="circle"></div></div>
+                </div>
+                <div class="sub-page-container">
+                    <div><div class="circle"></div></div>
+                </div>
+                <div class="sub-page-container">
+                    <div><div class="circle"></div><div class="selected-sub">His Other Atrocities</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-left: 35px;">
+            <div class="column header">
+                <p>...</p>
+            </div>
+            <div class="column left">
+                <div class="row">
+                    <div class="column text-box body">
+                        <p class="title white">
+                            혈액 폐기 및 혈액 관리 소홀
+                        </p>
+                        <hr class="white">
+                        <p class="white">대한적십자사가 운영하는 한 혈액원에서 관리 소홀로 혈액을 무더기로 폐기하고도 쉬쉬하는 일이 발생하였으며, 혈액이 
+                            모자라 대국민 헌혈 캠페인이 벌어지고 있는 현실을 무색케 하고 있다.
+                        </p>
+                        <hr class="white bottom">
+                        <p class="title white">
+                            개인정보 무단 유출
+                        </p>
+                        <hr class="white">
+                        <p class="white">대한적십자사가 헌혈자들의 개인정보 176만건을 민간기관에 무단으로 제공했다는 사실이 밝혀졌다. 이는 근래 저조한 
+                            헌혈 참여율에 가속도를 더할 것이며, 대한적십자사에 대한 국민의 신회도는 바닥에 떨어지는 계기로 작용하였다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column right">
+
+                <div class="row">
+                    <div class="column text-box body">
+                        <p class="title cyan">
+                            Dispose of blood and neglect of blood management
+                        </p>
+                        <hr class="cyan">
+                        <p class="cyan">
+                            The fact that a blood donation campaign is taking place due to a lack of blood is overshadowed by the fact that a blood donation campaign is taking place in a blood source run by the Korean Red Cross even after disposing of a bunch of blood due to a management hole.
+                        </p>
+                        <hr class="cyan bottom">
+                        <p class="title cyan">
+                            Unauthorized leakage of personal information
+                        </p>
+                        <hr class="cyan">
+                        <p class="cyan">
+                            It was revealed that the Korean Red Cross provided 1.76 million personal information of blood donors to private institutions without permission. This will accelerate the recent low blood donation participation rate, and it served as an opportunity for public confidence in the Korean Red Cross to fall to the bottom.
+                        </p>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="right-side-area">
+        <div style="float:right">
+            <div class="right-side-info">
+                <div><div class="selected-sub right">IHBD?</div></div>
+                <div><div class="selected-sub right">WDATMG?</div></div>
+                <div><div class="circle right"></div><div class="selected-sub right selected">His Other Atrocities</div></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

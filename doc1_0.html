@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <style>
+        @font-face {
+            font-family: 'SuncheonR';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/SuncheonR.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+            /* Should be removed. Only for demonstration */
+            box-sizing: border-box;
+            padding: 30px 25px 25px 25px;
+            color: #CCCCCC;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 33px;
+        }
+        .column.header {
+            /* float: right; */
+            padding: 25px 20px 25px 20px;
+            margin-left: 25px;
+            border: 1px solid #FF0000;
+            width: 700px;
+        }
+        .column.body {
+            margin-bottom: 20px;
+        }
+        .column.left {
+            width: 50%;
+            padding: 30px 15px 25px 25px;
+        }
+
+        .column.right {
+            width: 50%;
+            padding: 30px 25px 25px 15px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            min-width: 810px;
+            width: 810px;
+            content: "";
+            display: table;
+            clear: both;
+            box-sizing: border-box;
+        }
+
+        .text-box {
+            padding: 0;
+        }
+
+        .text-box.header {
+            font-family: 'SuncheonR';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 29px;
+            color: white;
+            height: 150px;
+        }
+
+        .text-box.title {
+            color: white;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 33px;
+            width: 60px;
+        }
+
+        .text-box.body {
+            color: #CCCCCC;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 33px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .hline {
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+
+        .column.right .hline {
+            background-color: #AD45FF;
+        }
+
+        .column.right .text-box.header {
+            color: #AD45FF
+        }
+
+        .column.right .text-box.title {
+            color: #AD45FF
+        }
+
+        .content-box {
+            float: left;
+            width: 780px;
+        }
+        hr.white {
+            border: 1px solid white;
+            width: 100%;
+            margin: 20px 0 20px;
+        }
+        hr.cyan {
+            border: 1px solid #00FFFF;
+            width: 100%;
+            margin: 20px 0 20px;
+        }
+        p.title-yellow {
+            font-size: 15px;
+            color: #FFFF00;
+        }
+        p.title-white {
+            font-size: 15px;
+            color: white
+        }
+        .icon-container {
+            width: 90%;
+            height: 130px;
+            float: left;
+        }
+        .icon-div {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            color: #FFFF00;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 22px;
+        }
+        .icon-div.hmargin {
+            padding-left: 4px;
+        }
+        .icon-image {
+            padding-right: 5px;
+        }
+        .icon-selected {
+            position: relative;
+            left: 40px;
+            top: -75px
+        }
+        .right-side-area {
+            width: 30px;
+            float: left;
+        }
+        .right-side-info {
+            display: flex;
+            align-items: center;
+            position: relative;
+            left: 585px;
+            top: 50px;
+            color: white;
+            width: 600px;
+            transform-origin: top left;
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+        .right-side-info span {
+            padding-left: 10px;
+            padding-right: 80px;
+        }
+        .right-side-info span.selected {
+            color: #FFFF00;
+        }
+        p {
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 500;
+        }
+        p.title {
+            font-size: 19px;
+            color: #00FFFF;
+            padding-bottom: 20px;
+        }
+        p.title.white {
+            font-size: 14px;
+            color: #FFFFFF;
+            padding-bottom: 0px;
+            font-weight: 600;
+        }
+        p.title.cyan {
+            font-size: 14px;
+            color: #00FFFF;
+            padding-bottom: 0px;
+            font-weight: 600;
+        }
+        p.white {
+            font-weight: 400;
+            font-size: 14px;
+            color: white;
+            padding-bottom: 0px;
+        }
+        p.cyan {
+            font-weight: 400;
+            font-size: 14px;
+            color: #00FFFF;
+            padding-bottom: 0px;
+        }
+        .sub-page-container {
+            width: 100%;
+            float: left;
+            height: 30px;
+        }
+        div.circle {
+            margin: 10px 5px ;
+            float: left;
+            width:12px;
+            height:12px;
+            border-radius:6px;
+            background:#00FFFF;
+        }
+        div.circle.right {
+            margin: 6px ;
+            float: left;
+            width:8px;
+            height:8px;
+            border-radius:4px;
+            background:#00FFFF;
+        }
+        div.selected-sub {
+            float: left;
+            margin-left: 10px;
+            font-size: 19px;
+            color: #00FFFF;
+        }
+        div.selected-sub.right {
+            padding-right: 100px;
+            float: left;
+            margin-left: 10px;
+            font-size: 14px;
+            color: #FFFFFF;
+        }
+        div.selected-sub.right.selected {
+            color: #00FFFF;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content-box">
+        <div class="row">
+            <div class="column">
+                <p class="title">His Track Record</p>
+                <div class="sub-page-container">
+                    <div><div class="circle"></div><div class="selected-sub">Is He a Blood Dealer?</div></div>
+                </div>
+                <div class="sub-page-container">
+                    <div><div class="circle"></div></div>
+                </div>
+                <div class="sub-page-container">
+                    <div><div class="circle"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-left: 35px;">
+            <div class="column header">
+                <p>적십자사, 원료혈장 민간제약사 퍼주기 ‘논란'</p>
+            </div>
+            <div class="column left">
+                <div class="row">
+                    <div class="column text-box body">
+                        <p class="title white">
+                            국민 헌혈로 생산한 분획용 혈장 헐값 판매로 8년간 819억원 손해
+                        </p>
+                        <hr class="white">
+                        <p class="white">거듭된 국정감사 지적에도 대한적십자사의 산출원가 이하 
+                            원료혈장 판매가 계속되는 것으로 나타났다. 보건복지위원회 소속의 김원이 의원이 분석한 적십자사 자료에 따르면, 2013~2022년 8월까지 국민 헌혈을 통한 혈액의 45%인 508만 7,477리터를 의약품 원료를 만들기 위한 분획용 
+                            혈액으로 사용했으며, 표준원가 개념을 도입할 경우 최근 
+                            8년간 819억원의 손해를 입은 것으로 파악됐다.
+                            국회 국정감사에서 거듭된 지적에도 불구하고, 적십자사는 
+                            원료혈장을 원가대비 65~77% 수준으로 제약사에 공급하는 관행을 멈추지 못했다. 2015년 연구용역을 통해 원료혈장 
+                            표준원가를 산출했으나, 적십자사 스스로 표준원가 개념을 
+                            사용하지 못하고 있는 형국이다. 적십자사가 산출한 표준 
+                            원가를 대입하면, 동결 혈장이 리터당 6만 846원, 신선 동결혈장은 리터당 4만 9,980원, 성분 채혈 혈장 리터당 3만 8,382원의 손해가 발생하고 있는 것이다. 거듭된 지적에도 불구하고 보건복지부와 적십자사는 요지부동이다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column right">
+
+                <div class="row">
+                    <div class="column text-box body">
+                        <p class="title cyan">
+                            Loss of KRW 81.9 billion over 8 years due to the sale of fraction plasma produced by national blood donation
+                        </p>
+                        <hr class="cyan">
+                        <p class="cyan">Despite repeated criticism of the parliamentary audit, sales of raw material plasma below the production cost of the Korean Red Cross continued. According to Red Cross data analyzed by Rep. Kim Won-yi of the National Assembly's Health and Welfare Committee, between 2013 and August 2022, 45% of the blood through national blood donation, or 5,087,477 liters, was used as fraction blood to make pharmaceutical raw materials.
+                            Despite repeated criticism during the parliamentary audit, the Red Cross failed to stop the practice of supplying raw material plasma to pharmaceutical companies at 65-77% of the cost. In 2015, the standard cost of raw material plasma was calculated through research services, but the Red Cross itself has not been able to use the concept of standard cost. If the standard cost calculated by the Red Cross is substituted, frozen plasma costs 68,846 won per liter, fresh frozen plasma costs 49,980 won per liter, and component blood collection costs 38,382 won per liter. Despite repeated criticism, the Ministry of Health and Welfare and the Red Cross are at a standstill.
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="right-side-area">
+        <div style="float:right">
+            <div class="right-side-info">
+                <div><div class="circle right"></div><div class="selected-sub right selected">Is He a Blood Dealer?</div></div>
+                <div><div class="selected-sub right">WDATMG?</div></div>
+                <div><div class="selected-sub right">HOA</div></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

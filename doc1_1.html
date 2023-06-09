@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <style>
+        @font-face {
+            font-family: 'SuncheonR';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/SuncheonR.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+            /* Should be removed. Only for demonstration */
+            box-sizing: border-box;
+            padding: 30px 25px 25px 25px;
+            color: #CCCCCC;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 33px;
+        }
+        .column.header {
+            /* float: right; */
+            padding: 25px 20px 25px 20px;
+            margin-left: 25px;
+            border: 1px solid #FF0000;
+            width: 700px;
+        }
+        .column.body {
+            margin-bottom: 20px;
+        }
+        .column.left {
+            width: 50%;
+            padding: 30px 15px 25px 25px;
+        }
+
+        .column.right {
+            width: 50%;
+            padding: 30px 25px 25px 15px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            min-width: 810px;
+            width: 810px;
+            content: "";
+            display: table;
+            clear: both;
+            box-sizing: border-box;
+        }
+
+        .text-box {
+            padding: 0;
+        }
+
+        .text-box.header {
+            font-family: 'SuncheonR';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 29px;
+            color: white;
+            height: 150px;
+        }
+
+        .text-box.title {
+            color: white;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 33px;
+            width: 60px;
+        }
+
+        .text-box.body {
+            color: #CCCCCC;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 33px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .hline {
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+
+        .column.right .hline {
+            background-color: #AD45FF;
+        }
+
+        .column.right .text-box.header {
+            color: #AD45FF
+        }
+
+        .column.right .text-box.title {
+            color: #AD45FF
+        }
+
+        .content-box {
+            float: left;
+            width: 780px;
+        }
+        hr.white {
+            border: 1px solid white;
+            width: 100%;
+            margin: 20px 0 20px;
+        }
+        hr.cyan {
+            border: 1px solid #00FFFF;
+            width: 100%;
+            margin: 20px 0 20px;
+        }
+        p.title-yellow {
+            font-size: 15px;
+            color: #FFFF00;
+        }
+        p.title-white {
+            font-size: 15px;
+            color: white
+        }
+        .icon-container {
+            width: 90%;
+            height: 130px;
+            float: left;
+        }
+        .icon-div {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            color: #FFFF00;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 22px;
+        }
+        .icon-div.hmargin {
+            padding-left: 4px;
+        }
+        .icon-image {
+            padding-right: 5px;
+        }
+        .icon-selected {
+            position: relative;
+            left: 40px;
+            top: -75px
+        }
+        .right-side-area {
+            width: 30px;
+            float: left;
+        }
+        .right-side-info {
+            display: flex;
+            align-items: center;
+            position: relative;
+            left: 585px;
+            top: 50px;
+            color: white;
+            width: 600px;
+            transform-origin: top left;
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+        .right-side-info span {
+            padding-left: 10px;
+            padding-right: 80px;
+        }
+        .right-side-info span.selected {
+            color: #FFFF00;
+        }
+        p {
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 500;
+        }
+        p.title {
+            font-size: 19px;
+            color: #00FFFF;
+            padding-bottom: 20px;
+        }
+        p.title.white {
+            font-size: 14px;
+            color: #FFFFFF;
+            padding-bottom: 0px;
+            font-weight: 600;
+        }
+        p.title.cyan {
+            font-size: 14px;
+            color: #00FFFF;
+            padding-bottom: 0px;
+            font-weight: 600;
+        }
+        p.white {
+            font-weight: 400;
+            font-size: 14px;
+            color: white;
+            padding-bottom: 0px;
+        }
+        p.cyan {
+            font-weight: 400;
+            font-size: 14px;
+            color: #00FFFF;
+            padding-bottom: 0px;
+        }
+        .sub-page-container {
+            width: 100%;
+            float: left;
+            height: 30px;
+        }
+        div.circle {
+            margin: 10px 5px ;
+            float: left;
+            width:12px;
+            height:12px;
+            border-radius:6px;
+            background:#00FFFF;
+        }
+        div.circle.right {
+            margin: 6px ;
+            float: left;
+            width:8px;
+            height:8px;
+            border-radius:4px;
+            background:#00FFFF;
+        }
+        div.selected-sub {
+            float: left;
+            margin-left: 10px;
+            font-size: 19px;
+            color: #00FFFF;
+        }
+        div.selected-sub.right {
+            padding-right: 80px;
+            float: left;
+            margin-left: 10px;
+            font-size: 14px;
+            color: #FFFFFF;
+        }
+        div.selected-sub.right.selected {
+            color: #00FFFF;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content-box">
+        <div class="row">
+            <div class="column">
+                <p class="title">His Track Record</p>
+                <div class="sub-page-container">
+                    <div><div class="circle"></div></div>
+                </div>
+                <div class="sub-page-container">
+                    <div><div class="circle"></div><div class="selected-sub">Where Does All That Money Go?</div></div>
+                </div>
+                <div class="sub-page-container">
+                    <div><div class="circle"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-left: 35px;">
+            <div class="column header">
+                <p>...</p>
+            </div>
+            <div class="column left">
+                <div class="row">
+                    <div class="column text-box body">
+                        <p class="title white">
+                            혈액수가를 통한 휴양시설 회원권 대량 구매
+                        </p>
+                        <hr class="white">
+                        <p class="white">2017년 10월 12일, 국회 보건복지위원회 김순례 의원
+                            (자유한국당)이 대한적십자사로부터 제출받은 '기관별 
+                            휴양시설 회원권 보유내역'을 분석한 결과에 따르면, 
+                            대한적십자사가 보유한 휴양시설 회원권은 87구좌로 10억900만원 어치에 달한다. 연간 9780명이 2580일간 이용할 수 있는 수치다. 하지만 적십자사 직원들의 콘도 이용률은 
+                            연평균 30%에 불과했다. 심지어 혈장분획센터는 2017년 
+                            이용실적이 전혀 없었다. 더 심각한 점은 '혈액을 판 돈으로 회원권을 샀다.'는 점이다. 대한적십자사 본사의 회원권은 
+                            이세웅 전 적십자사 총재의 기부금으로 구매하였지만, 나머지 회원권은 모두 운영비로 구입했던 것. 운영비에는 헌혈로 
+                            확보한 혈액을 의료기관에 제공하고 받은 혈액수가가 
+                            포함되어 있다. 김순례 의원은 "적십자사는 불필요한 콘도 
+                            회원권을 매각하고, 운영비 집행을 투명하게 해야 한다."고 
+                            비판했다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column right">
+
+                <div class="row">
+                    <div class="column text-box body">
+                        <p class="title cyan">
+                            Bulk purchase of membership for recreational facilities through blood supply
+                        </p>
+                        <hr class="cyan">
+                        <p class="cyan">On October 12, 2017, Kim Soon-rye (Liberal Korea Party) of the National Assembly's Health and Welfare Committee analyzed the "Membership of Recreation Facilities by Institution" submitted by the Korean Red Cross. The figure is available to 9,780 people a year for 2,580 days. However, the average usage rate of condominiums by Red Cross employees was only 30 percent per year. Even the plasma fraction center did not have any use performance in 2017. What's more serious is that I bought a membership with the money I sold my blood.The membership of the Korean Red Cross headquarters was purchased with donations from former Red Cross President Lee Se-woong, but the rest of the membership was purchased for operating expenses. Operating expenses include the amount of blood received after providing blood secured through blood donation to medical institutions. Rep. Kim Soon-rye said, "The Red Cross should sell unnecessary condominium memberships and make operating expenses transparent.I criticized him.</p>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="right-side-area">
+        <div style="float:right">
+            <div class="right-side-info">
+                <div><div class="selected-sub right">IHBD?</div></div>
+                <div><div class="circle right"></div><div class="selected-sub right selected">Where Does All That Money Go?</div></div>
+                <div><div class="selected-sub right">HOA</div></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
