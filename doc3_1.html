@@ -224,6 +224,43 @@
             font-size: 19px;
             padding-bottom: 20px;
         }
+        .image-container {
+            /* display: flex; */
+            /* align-items: center;
+            justify-content: center; */
+        }
+        .image-box {
+            padding-left: 90px;
+            float: left;
+        }
+        .image-container-side {
+            margin-top: -50px;
+            float: right;
+        }
+        .image-star {
+            /* padding-left: 20px; */
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        .image-star.m-l-20 {
+            margin-left: 20px;
+        }
+        .image-star.m-b-20 {
+            margin-bottom: 20px;
+        }
+        .image-label {
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 500;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -70%);
+            background-color: black;
+            width: 52px;
+            height: 32px;
+        }
 
     </style>
 </head>
@@ -256,9 +293,26 @@
             <div style="padding: 5px 25px 20px 25px;">
                 <hr class="white" />
                 <div class="row">
-                    <div class="column text-box">
+                    <div class="column text-box"">
                         <p class="title">혈액 보유 현황</p>
-                        <p>image</p>
+                        <div class="image-container">
+                            <div class="image-box">
+                                <div style="float:left;">
+                                    <div class="image-star m-b-20"><img src="images/bloodRetentionRateCrisisStageBlue.png"><div class="image-label">관심</div></div>
+                                    <div class="image-star"><img src="images/bloodRetentionRateCrisisStageOrange.png"><div class="image-label">경계</div></div>
+                                </div>
+                                <div style="float:left;">
+                                    <div class="image-star m-l-20 m-b-20"><img src="images/bloodRetentionRateCrisisStageYellow.png"><div class="image-label">주의</div></div>
+                                    <div class="image-star m-l-20"><img src="images/bloodRetentionRateCrisisStageRed.png"><div class="image-label">심각</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-container-side">
+                            <div><img src="images/bloodRetentionRateCrisisStageBlue.png" width="100" height="100"></div>
+                            <div><img src="images/bloodRetentionRateCrisisStageYellow.png" width="100" height="100"></div>
+                            <div><img src="images/bloodRetentionRateCrisisStageOrange.png" width="100" height="100"></div>
+                            <div><img src="images/bloodRetentionRateCrisisStageRed.png" width="100" height="100"></div>
+                        </div>
                     </div>
                 </div>
             </div>

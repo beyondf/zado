@@ -224,7 +224,45 @@
             font-size: 19px;
             padding-bottom: 20px;
         }
-
+        .image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-box {
+        }
+        .image-container-side {
+            /* margin-top: -50px; */
+            float: right;
+        }
+        .image-cross {
+            /* padding-left: 20px; */
+            float: left;
+            position: relative;
+            text-align: center;
+            color: white;
+            margin: 20px;
+        }
+        .image-cross.m-l-20 {
+            margin-left: 20px;
+        }
+        .image-cross.m-b-20 {
+            margin-bottom: 20px;
+        }
+        .image-label {
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 500;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -70%);
+            background-color: black;
+            height: 32px;
+            width: auto;
+            padding: 0 10px 0 10px;
+            display: table;
+        }
     </style>
 </head>
 
@@ -258,9 +296,26 @@
                 <div class="row">
                     <div class="column text-box">
                         <p class="title">보유 현황 추이</p>
-                        <p>image</p>
-                        <p class="title">혈소판 제제 보유 현황</p>
-                        <p>image</p>
+                        <div class="image-container">
+                            <div class="image-box">
+                                <div style="float:left;">
+                                    <div class="image-cross"><img src="images/bloodRetentionRateAboutPlateletPreparationRed.png"><div class="image-label">적혈구 제제</div></div>
+                                    <div class="image-cross"><img src="images/bloodRetentionRateAboutPlateletPreparationGreen.png"><div class="image-label">농축 혈소판</div></div>
+                                    <div class="image-cross"><img src="images/bloodRetentionRateAboutPlateletPreparationCyan.png"><div class="image-label">성분 채혈 혈소판</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="title" style="padding-top: 40px;">혈소판 제제 보유 현황</p>
+                        <div class="image-container">
+                            <div class="image-box">
+                                <div style="float:left;">
+                                    <div class="image-cross"><img src="images/bloodRetentionRateAboutPlateletPreparationRed.png"><div class="image-label">적혈구 제제</div></div>
+                                    <div class="image-cross"><img src="images/bloodRetentionRateAboutPlateletPreparationGreen.png"><div class="image-label">농축 혈소판</div></div>
+                                    <div class="image-cross"><img src="images/bloodRetentionRateAboutPlateletPreparationCyan.png"><div class="image-label">성분 채혈 혈소판</div></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
